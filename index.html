@@ -9,7 +9,13 @@
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css"></script>
   <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
-  <link href="https://cdn.jsdelivr.net/npm/swiper@8.0.7/swiper-bundle.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+<!-- Swiper CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
   <script src="//unpkg.com/alpinejs" defer="defer"></script>
   <link href="/src/styles.css" rel="stylesheet">
 
@@ -127,17 +133,17 @@
 
         <!-- Right Side: Image Slider -->
         <div id="sliderContainer" class="lg:w-1/2 w-full opacity-0 animate-fade-in delay-[1500ms]">
-          <div class="relative w-full h-[300px] sm:h-[500px] rounded-lg overflow-hidden">
+          <div class="relative w-full h-[300px] sm:h-[550px] rounded-lg overflow-hidden">
             <div class="swiper-container">
               <div class="swiper-wrapper">
                 <div class="swiper-slide">
-                  <img src="src/in4images/Barly Vallendito.jpeg" alt="Slide 1" class="w-full h-full object-cover" />
+                  <img src="src/in4images/in4dasboard1.jpg" alt="Slide 1" class="w-full h-[470px] object-cover object-center" loading="lazy" />
                 </div>
                 <div class="swiper-slide">
-                  <img src="src/in4images/Barly Vallendito.jpeg" alt="Slide 2" class="w-full h-full object-cover" />
+                  <img src="src/in4images/in4dashboard2.jpg" alt="Slide 2" class="w-full h-[470px] object-cover" />
                 </div>
                 <div class="swiper-slide">
-                  <img src="src/in4images/Barly Vallendito.jpeg" alt="Slide 3" class="w-full h-full object-cover" />
+                  <img src="src/in4images/in4dashboard.jpg" alt="Slide 3" class="w-full h-[470px] object-cover" />
                 </div>
               </div>
               <!-- Pagination Dots -->
@@ -150,7 +156,26 @@
       </div>
     </section>
 
-
+    <script>
+      const swiper = new Swiper('.swiper-container', {
+                       loop: true,
+                       autoplay: {
+                         delay: 3000,
+                         disableOnInteraction: false,
+                       },
+                       pagination: {
+                         el: '.swiper-pagination',
+                         clickable: true, // Allows clicking on dots to navigate
+                         renderBullet: function (index, className) {
+                           return '<span class="' + className + ' w-4 h-4 bg-purple-700 rounded-full  mx-1 py-0 mb-5 px-10"></span>'; // Custom dot size
+                         },
+                       },
+                     });
+   
+                     function togglePopup(show) {
+                       document.getElementById('popupForm').classList.toggle('hidden', !show);
+                     }
+   </script>
 
     <!-- Popup Form with Left-Side Content -->
     <div id="popupForm" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
@@ -270,7 +295,7 @@
         <div
           class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-16 max-lg:max-w-3xl max-md:max-w-md mx-auto">
           <div
-            class="bg-white cursor-pointer rounded-lg overflow-hidden shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] relative group">
+            class="bg-white  rounded-lg overflow-hidden shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] relative group">
             <img src="src/in4images/One Size does't fit all-01.jpg" alt="" class="w-full h-96 object-cover" />
             <div class="p-6 absolute bottom-0 left-0 right-0 bg-purple-500/70 opacity-90">
               <h3 class="text-2xl font-bold text-gray-100">One Size Doesn’t Fit All – We Customize</h3>
@@ -296,7 +321,7 @@
             </div>
           </div>
           <div
-            class="bg-white cursor-pointer rounded-lg overflow-hidden shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] relative group">
+            class="bg-white  rounded-lg overflow-hidden shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] relative group">
             <img src="src/in4images/price.jpg" alt="" class="w-full h-96 object-cover object-right" />
 
             <div class="p-6 absolute bottom-0 left-0 right-0  bg-purple-500/70 opacity-90">
@@ -321,7 +346,7 @@
             </div>
           </div>
           <div
-            class="bg-white cursor-pointer rounded-lg overflow-hidden shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] relative group">
+            class="bg-white  rounded-lg overflow-hidden shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] relative group">
             <img src="src/in4images/Choose How you operate_In4 Cloud (1).jpg" alt="" class="w-full h-96 object-cover" />
             <div class="p-6 absolute bottom-0 left-0 right-0 bg-purple-500/70 opacity-90">
               <h3 class="text-2xl font-bold text-gray-100">Choose How You Operate – We’ll Handle the Rest</h3>
