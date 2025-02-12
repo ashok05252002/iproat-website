@@ -1,1 +1,1769 @@
-<h1>Sample</h1>
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pro-sale</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="//unpkg.com/alpinejs" defer="defer"></script>
+  <link href="./src/styles.css" rel="stylesheet">
+
+</head>
+<style>
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px)
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0)
+    }
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 1s ease-out forwards
+  }
+
+  .toast-container {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    z-index: 50
+  }
+
+  .toast {
+    animation: slideIn 0.5s ease-out forwards
+  }
+
+  .toast.hide {
+    animation: slideOut 0.5s ease-in forwards
+  }
+
+  @keyframes slideIn {
+    from {
+      transform: translateX(100%);
+      opacity: 0
+    }
+
+    to {
+      transform: translateX(0);
+      opacity: 1
+    }
+  }
+
+  @keyframes slideOut {
+    from {
+      transform: translateX(0);
+      opacity: 1
+    }
+
+    to {
+      transform: translateX(100%);
+      opacity: 0
+    }
+  }
+
+  .progress-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    background: rgb(255 255 255 / .3);
+    animation: progress 10s linear forwards
+  }
+
+  @keyframes progress {
+    from {
+      width: 100%
+    }
+
+    to {
+      width: 0%
+    }
+  }
+</style>
+
+
+<body>
+  <header class='flex border-b border-1 bg-white  font-inter min-h-[70px] tracking-wide relative z-50'>
+    <div class='w-full flex flex-wrap items-center justify-start gap-6 px-10 py-3 relative'>
+      <a href="javascript:void(0)"><img src="src/images/logo....-removebg-preview.png" alt="logo" class='w-36 ' />
+      </a>
+
+      <div id="collapseMenu"
+        class='max-lg:hidden grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 ml-44 flex justify-center items-center lg:!block max-lg:before:fixed max-lg:before:bg-black max-lg:before:opacity-40 max-lg:before:inset-0 max-lg:before:z-50'>
+        <button id="toggleClose" class='lg:hidden fixed top-2 right-4 z-[100] rounded-full bg-white p-3'>
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 fill-black" viewBox="0 0 320.591 320.591">
+            <path
+              d="M30.391 318.583a30.37 30.37 0 0 1-21.56-7.288c-11.774-11.844-11.774-30.973 0-42.817L266.643 10.665c12.246-11.459 31.462-10.822 42.921 1.424 10.362 11.074 10.966 28.095 1.414 39.875L51.647 311.295a30.366 30.366 0 0 1-21.256 7.288z"
+              data-original="#000000"></path>
+            <path
+              d="M287.9 318.583a30.37 30.37 0 0 1-21.257-8.806L8.83 51.963C-2.078 39.225-.595 20.055 12.143 9.146c11.369-9.736 28.136-9.736 39.504 0l259.331 257.813c12.243 11.462 12.876 30.679 1.414 42.922-.456.487-.927.958-1.414 1.414a30.368 30.368 0 0 1-23.078 7.288z"
+              data-original="#000000"></path>
+          </svg>
+        </button>
+        <ul
+          class='lg:flex lg:ml-10 lg:gap-x-10 max-lg:space-y-3 max-lg:fixed max-lg:bg-white max-lg:w-3/4 max-lg:min-w-[300px] max-lg:top-0 max-lg:left-0 max-lg:p-4 max-lg:h-full max-lg:shadow-md max-lg:overflow-auto z-50'>
+          <li class='max-lg:border-b max-lg:pb-4 px-3 lg:hidden'>
+            <a href=""><img src="src/images/Pro-Sales (black).png" alt="logo" class='w-36' />
+            </a>
+          </li>
+          <li class='max-lg:border-b max-lg:px-3 max-lg:py-2'><a href='index.html'
+              class='hover:text-blue-500 text-blue-500 font-bold text-sm block'>Home</a></li>
+          <li class='group text-sm max-lg:border-b max-lg:px-3 max-lg:py-2 relative'>
+            <a href='javascript:void(0)'
+              class='hover:text-blue-500 hover:fill-blue-500 text-gray-500 font-bold text-sm block'>Products<svg
+                xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" class="ml-1 inline-block"
+                viewBox="0 0 24 24">
+                <path
+                  d="M12 16a1 1 0 0 1-.71-.29l-6-6a1 1 0 0 1 1.42-1.42l5.29 5.3 5.29-5.29a1 1 0 0 1 1.41 1.41l-6 6a1 1 0 0 1-.7.29z"
+                  data-name="16" data-original="#000000" />
+              </svg>
+            </a>
+            <div
+              class='absolute lg:top-5 max-lg:top-8 -left-6 z-50 md:flex overflow-y-auto shadow-lg bg-white max-h-0 overflow-hidden group-hover:opacity-100 group-hover:max-h-[700px] px-8 group-hover:pb-8 group-hover:pt-6 transition-all duration-500'>
+              <div class="lg:min-w-[300px] w-auto max-lg:min-w-[140px]">
+                <h6 class="text-base text-blue-500 font-bold"></h6>
+                <ul class='mt-3 pt-3 border-t border-1 space-y-3'>
+                  <li class='max-lg:border-b py-1 rounded'>
+                    <a href='Pro-Sale.html' class='hover:text-blue-500 text-gray-500 font-bold text-sm block'>
+                      Pro-Sales
+
+                      <p class="text-gray-400 text-sm">Sales Leads Management Software</p>
+                      <button class="bg-blue-500 text-gray-50 px-4 py-2 text-sm rounded mt-2">Explore Features</button>
+                    </a>
+                  </li>
+                  <li class='max-lg:border-b py-1 rounded'>
+                    <a href='Pro-People.html' class='hover:text-blue-500 text-gray-500 font-bold text-sm block'>
+                      Pro-People
+
+                      <p class="text-gray-400 text-sm">HRMS & Payroll Software</p>
+                      <button class="bg-blue-500 text-gray-50 px-4 py-2 text-sm rounded mt-2">Explore Features</button>
+                    </a>
+                  </li>
+
+                  <li class='max-lg:border-b py-1 rounded'>
+                    <a href='pro-Task.html' class='hover:text-blue-500 text-gray-500 font-bold text-sm block'>
+                      Pro-Task
+
+                      <p class="text-gray-400 text-sm">Task Management Solution</p>
+                      <button class="bg-blue-500 text-gray-50 px-4 py-2 text-sm rounded mt-2">Explore Features</button>
+                    </a>
+                  </li>
+                  <li class='max-lg:border-b py-1 rounded'>
+                    <a href='Pro-Project.html' class='hover:text-blue-500 text-gray-500 font-bold text-sm block'>
+                      Pro-Project
+
+                      <p class="text-gray-400 text-sm">Project Management System</p>
+                      <button class="bg-blue-500 text-gray-50 px-4 py-2 text-sm rounded mt-2">Explore Features</button>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <div class="lg:min-w-[300px] w-auto max-lg:min-w-[140px]">
+                <h6 class="text-base text-blue-500 font-bold"></h6>
+                <ul class='mt-3 pt-3 border-t border-1 space-y-3'>
+                  <li class='max-lg:border-b py-1 rounded'>
+                    <a href='javascript:void(0)' class='hover:text-blue-500 text-gray-500 font-bold text-sm block'>
+                      Pro-Canteen
+
+                      <p class="text-gray-400 text-sm">Canteen Management System</p>
+                      <button class="bg-blue-500 text-gray-50 px-4 py-2 text-sm rounded mt-2">Explore Features</button>
+                    </a>
+                  </li>
+                  <li class='max-lg:border-b py-1 rounded'>
+                    <a href='Pro-Biz.html' class='hover:text-blue-500 text-gray-500 font-bold text-sm block'>
+                      Pro-Biz
+
+                      <p class="text-gray-400 text-base">Inventory Management System</p>
+                      <button class="bg-blue-500 text-gray-50 px-4 py-2 text-sm rounded mt-2">Explore Features</button>
+                    </a>
+                  </li>
+                  <li class='max-lg:border-b py-1 rounded'>
+                    <a href='Pro-Ticket.html' class='hover:text-blue-500 text-gray-500 font-bold text-sm block'>
+                      Pro-Ticket
+
+                      <p class="text-gray-400 text-sm">Customer Support Software</p>
+                      <button class="bg-blue-500 text-gray-50 px-4 py-2 text-sm rounded mt-2">Explore Features</button>
+                    </a>
+                  </li>
+                  <li class='max-lg:border-b py-1 rounded'>
+                    <a href='pro-visitor.html' class='hover:text-blue-500 text-gray-500 font-bold text-sm block'>
+                      Pro-Visit
+
+                      <p class="text-gray-400 text-sm">Visitor's Management Software</p>
+                      <button class="bg-blue-500 text-gray-50 px-4 py-2 text-sm rounded mt-2">Explore Features</button>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <div class="lg:min-w-[300px] w-auto max-lg:min-w-[140px]">
+                <h6 class="text-base text-blue-500 font-bold"></h6>
+                <ul class='mt-3 pt-3 border-t border-1 space-y-3'>
+                  <li class='max-lg:border-b py-1 rounded'>
+                    <a href='javascript:void(0)' class='hover:text-blue-500 text-gray-500 font-bold text-sm block'>
+                      Pro-School
+
+                      <p class="text-gray-400 text-sm">Students Academic Management software</p>
+                      <button class="bg-blue-500 text-gray-50 px-4 py-2 text-sm rounded mt-2">Explore Features</button>
+                    </a>
+                  </li>
+                  <li class='max-lg:border-b py-1 rounded'>
+                    <a href='Pro-Pupil.html' class='hover:text-blue-500 text-gray-500 font-bold text-sm block'>
+                      Pro-Pupil
+
+                      <p class="text-gray-400 text-sm">Learning Management System</p>
+                      <button class="bg-blue-500 text-gray-50 px-4 py-2 text-sm rounded mt-2">Explore Features</button>
+                    </a>
+                  </li>
+                  <li class='max-lg:border-b py-1 rounded'>
+                    <a href='javascript:void(0)' class='hover:text-blue-500 text-gray-500 font-bold text-sm block'>
+                      Pro-Assure
+
+                      <p class="text-gray-400 text-sm">Warranty, Claims Management Software</p>
+                      <button class="bg-blue-500 text-gray-50 px-4 py-2 text-sm rounded mt-2">Explore Features</button>
+                    </a>
+                  </li>
+                  <li class='max-lg:border-b py-1 rounded'>
+                    <a href='javascript:void(0)' class='hover:text-blue-500 text-gray-500 font-bold text-sm block'>
+                      Pro-Parking
+
+                      <p class="text-gray-400 text-sm ">Parking management Solutions</p>
+                      <button class="bg-blue-500 text-gray-50 px-4 py-2 text-sm rounded mt-2">Explore Features</button>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </li>
+          <li class='max-lg:border-b max-lg:px-3 max-lg:py-2'><a href='javascript:void(0)'
+              class='hover:text-blue-500 text-gray-500 font-bold text-sm block'>AI Solutions</a></li>
+          <!-- Resources Dropdown Menu -->
+          <div class="relative" x-data="{ blogDropdown: false }" @mouseenter="blogDropdown = true"
+            @mouseleave="blogDropdown = false">
+            <a href="#"
+              class="max-lg:border-b max-lg:px-3 max-lg:py-2 hover:text-blue-500 text-gray-500 font-bold text-sm block">
+              Resources
+              <!-- Icon for dropdown - hidden on small screens -->
+              <svg :class="{ 'rotate-180': blogDropdown }"
+                class="ml-1 w-4 h-4 transition-transform duration-200 hidden lg:inline-block"
+                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </a>
+            <div x-show="blogDropdown" x-transition:enter="transition ease-out duration-200"
+              x-transition:leave="transition ease-in duration-200"
+              class="absolute left-0 w-40 mt-2 bg-white shadow-lg rounded-lg z-20" x-cloak>
+              <a href="Blog.html"
+                class="block px-4 py-2 text-gray-950 rounded-full hover:bg-blue-500 hover:text-white">Blog</a>
+              <a href="authors.html"
+                class="block px-4 py-2 text-gray-950 rounded-full hover:bg-blue-500 hover:text-white">Authors</a>
+            </div>
+          </div>
+          <!-- Company Dropdown Menu -->
+          <div class="relative" x-data="{ contactDropdown: false }" @mouseenter="contactDropdown = true"
+            @mouseleave="contactDropdown = false">
+            <a href="#"
+              class="max-lg:border-b max-lg:px-3 max-lg:py-2 hover:text-blue-500 text-gray-500 font-bold text-sm block">
+              Company
+              <!-- Icon for dropdown - hidden on small screens -->
+              <svg :class="{ 'rotate-180': contactDropdown }"
+                class="ml-1 w-4 h-4 transition-transform duration-200 hidden lg:inline-block"
+                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </a>
+            <div x-show="contactDropdown" x-transition:enter="transition ease-out duration-200"
+              x-transition:leave="transition ease-in duration-200"
+              class="absolute left-0 w-40 mt-2 bg-white shadow-lg rounded-lg z-20" x-cloak>
+              <a href="About us.html"
+                class="block px-4 py-2 text-black rounded-full hover:bg-blue-500 hover:text-white">About Us</a>
+              <a href="#Contact Us"
+                class="block px-4 py-2 text-black rounded-full hover:bg-blue-500 hover:text-white">Contact Us</a>
+            </div>
+          </div>
+      </div>
+      <div class='flex items-center ml-auto lg:hidden'>
+        <button id="toggleOpen">
+          <svg class="w-7 h-7" fill="#000" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd"
+              d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+              clip-rule="evenodd"></path>
+          </svg>
+        </button>
+      </div>
+  </header>
+
+
+  <!-- Section 1 -->
+  <section class=" container flex flex-col lg:flex-row justify-center items-start mx-auto px-6  ">
+    <!-- Logo Section -->
+    <div class="flex flex-col-reverse lg:flex-row items-center justify-between w-full">
+
+      <!-- Left Text Section -->
+      <div class="lg:w-1/2 space-y-0 pl-0 lg:pl-20 text-center  lg:text-left">
+        <img src="src/images/Pro-Sales (black).png" alt="Company Logo" class="h-28 mx-auto lg:mx-0">
+        <!-- Adjust size as needed -->
+        <h1 class="text-3xl lg:text-5xl font-bold text-gray-900 leading-snug">
+          EASY SALES CRM TO <br> CLOSE DEALS FASTER
+        </h1>
+        <p
+          class="text-sm px-10 md:px-0 lg:px-0 sm:px-0 md:text-xl lg:text-2xl text-gray-800 pt-4 lg:pt-4  leading-relaxed">
+          Effective Customer Relationship Management System helps you to drive more sales. Our CRM helps streamline
+          workflows and keep your sales team focused on what matters most.
+        </p>
+
+        <div class="flex justify-center lg:justify-start space-x-4 mt-6 md:mt-0 text-white lg:pt-4">
+          <!-- Request a Demo Button -->
+          <button onclick="toggleModal()"
+            class="px-5 py-2.5 rounded-lg text-sm tracking-wider font-medium border border-current outline-none bg-[#DB3D5B] hover:bg-transparent text-white hover:text-red-700 transition-all duration-300">Request
+            a Demo</button>
+
+          <!-- Download Brochure Button -->
+          <button onclick="toggleModal()"
+            class="px-5 py-2.5 rounded-lg text-sm tracking-wider font-medium border border-current outline-none bg-[#DB3D5B] hover:bg-transparent text-white hover:text-red-700 transition-all duration-300">
+            Download Brochure</button>
+        </div>
+      </div>
+
+      <!-- Right Image Section -->
+      <div class="bg-white lg:w-2/5 relative lg:mt-0">
+        <!-- Laptop Mockup Image with Medium Size -->
+        <img src="src/images/Hero Image.png" alt="CRM Dashboard" class="w-full max-w-sm md:max-w-2xl mx-auto">
+      </div>
+    </div>
+  </section>
+ <!-- Section 2 -->
+  <section class="bg-[#FBE9EB] py-16">
+    <img class="lg:w-44 w-24 ml-36 lg:ml-24" src="src/images/Pro-Biz (black).png logo.png" alt="">
+    <div class="px-4 mx-auto max-w-7xl mt-5 sm:mt-24">
+
+      <div class="text-center">
+        <h1 class="text-4xl font-bold text-gray-900 sm:text-5xl md:text-5xl font-inter">
+          <span class="block">Your Complete Inventory and</span>
+          <span class="block pt-2">Warehouse Management Solution</span>
+        </h1>
+        <p class="max-w-md mx-auto mt-3 text-base text-gray-900 font-inter sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
+          Optimize your business with Pro-Biz, a powerful inventory and warehouse management system. Handle inventory,
+          purchase orders, and multi-location warehouses seamlessly.
+        </p>
+        <div class="max-w-md mx-auto mt-5 sm:flex sm:justify-center md:mt-0">
+          <div class="flex gap-4 mt-10 justify-center">
+            <!-- Schedule a Demo Button -->
+            <button onclick="toggleModal()"
+              class="px-5 py-2.5 rounded-lg text-sm tracking-wider font-medium border border-current outline-none bg-[#DB3D5B] hover:bg-transparent text-white hover:text-red-700 transition-all duration-300">Request
+              a Demo</button>
+
+            <!-- Download Brochure Button -->
+            <button onclick="toggleModal()"
+              class="px-5 py-2.5 rounded-lg text-sm tracking-wider font-medium border border-current outline-none bg-[#DB3D5B] hover:bg-transparent text-white hover:text-red-700 transition-all duration-300">
+              Download Brochure</button>
+          </div>
+        </div>
+      </div>
+      <div class="flex justify-center mt-16 lg:mt-8">
+        <img src="src/images/Pro-Biz Hero image (2).png e.png" alt="Dashboard image"
+          class="w-full max-w-4xl h-auto object-contain" />
+      </div>
+    </div>
+  </section>
+
+ <!-- Section 3 -->
+  <section class="flex h-auto items-center mt-10 justify-center bg-gray-50 px-4">
+    <div
+      class="flex max-w-[1336px] rounded-2xl flex-nowrap overflow-hidden border-y border-gray-300 py-4 shadow-md bg-white">
+      <div
+        class="flex items-center justify-center md:justify-start animate-[infinite-scroll_20s_linear_infinite] space-x-6">
+        <div class="w-[200px] h-[100px] bg-gray-50 border border-gray-100 rounded-2xl flex items-center justify-center">
+          <span class="text-xs font-semibold">Logo1</span>
+        </div>
+        <div class="w-[200px] h-[100px] bg-gray-50 border border-gray-100 rounded-2xl flex items-center justify-center">
+          <span class="text-xs font-semibold">Logo2</span>
+        </div>
+        <div class="w-[200px] h-[100px] bg-gray-50 border border-gray-100 rounded-2xl flex items-center justify-center">
+          <span class="text-xs font-semibold">Logo3</span>
+        </div>
+        <div class="w-[200px] h-[100px] bg-gray-50 border border-gray-100 rounded-2xl flex items-center justify-center">
+          <span class="text-xs font-semibold">Logo4</span>
+        </div>
+        <div class="w-[200px] h-[100px] bg-gray-50 border border-gray-100 rounded-2xl flex items-center justify-center">
+          <span class="text-xs font-semibold">Logo5</span>
+        </div>
+      </div>
+      <div
+        class="flex items-center justify-center md:justify-start animate-[infinite-scroll_20s_linear_infinite] space-x-6">
+        <div class="w-[200px] h-[100px] bg-gray-50 border border-gray-100 rounded-2xl flex items-center justify-center">
+          <span class="text-xs font-semibold">Logo6</span>
+        </div>
+        <div class="w-[200px] h-[100px] bg-gray-50 border border-gray-100 rounded-2xl flex items-center justify-center">
+          <span class="text-xs font-semibold">Logo7</span>
+        </div>
+        <div class="w-[200px] h-[100px] bg-gray-50 border border-gray-100 rounded-2xl flex items-center justify-center">
+          <span class="text-xs font-semibold">Logo8</span>
+        </div>
+        <div class="w-[200px] h-[100px] bg-gray-50 border border-gray-100 rounded-2xl flex items-center justify-center">
+          <span class="text-xs font-semibold">Logo9</span>
+        </div>
+        <div class="w-[200px] h-[100px] bg-gray-50 border border-gray-100 rounded-2xl flex items-center justify-center">
+          <span class="text-xs font-semibold">Logo10</span>
+        </div>
+      </div>
+    </div>
+  </section>
+ <!-- Section 4 -->
+  <section>
+  <div class="text-center mb-10 mt-10">
+    <h1 class="font-inter text-3xl font-medium sm:text-3xl text-black">This simple visitor management system suits
+      the specific needs of the following premises.
+    </h1>
+  </div>
+
+  <div class="flex items-center justify-center min-h-auto bg-white mt-10">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      <!-- Card 1 -->
+      <div class="group w-96 h-72 [perspective:1000px]">
+        <div
+          class="relative w-full h-full transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
+          <!-- Front Side -->
+          <div
+            class="absolute w-full h-full bg-black text-white flex items-center justify-center rounded-lg p-4 [backface-visibility:hidden]">
+            <img src="src/images/Corporte offices.png" alt="Corporate Offices"
+              class="absolute inset-0 w-full h-full object-cover opacity-50 rounded-lg">
+            <div class="text-center relative z-10">
+              <h2 class="text-xl font-bold mb-2">Corporate Offices</h2>
+              <p class="text-sm">In professional office settings, improve security and expedite visitor check-ins for
+                staff, customers, and suppliers.</p>
+            </div>
+          </div>
+          <!-- Back Side -->
+          <div
+            class="absolute w-full h-full bg-[#DB3D5B] text-white flex items-center justify-center rounded-lg p-4 [transform:rotateY(180deg)] [backface-visibility:hidden]">
+            <div class="text-center">
+              <h2 class="text-xl font-bold mb-2">Corporate Offices</h2>
+              <p class="text-sm">In professional office settings, improve security and expedite visitor check-ins for
+                staff, customers, and suppliers.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="group w-96 h-72 [perspective:1000px]">
+        <div
+          class="relative w-full h-full transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
+          <div
+            class="absolute w-full h-full bg-black text-white flex items-center justify-center rounded-lg p-4 [backface-visibility:hidden]">
+            <img src="src/images/Education.png" alt="Educational Institutions"
+              class="absolute inset-0 w-full h-full object-cover opacity-50 rounded-lg">
+            <div class="text-center relative z-10">
+              <h2 class="text-xl font-bold mb-2">Educational Institutions</h2>
+              <p class="text-sm">Efficiently manage campus visitors, ensuring a safe and organized environment for
+                students and staff.</p>
+            </div>
+          </div>
+          <div
+            class="absolute w-full h-full bg-[#DB3D5B] text-white flex items-center justify-center rounded-lg p-4 [transform:rotateY(180deg)] [backface-visibility:hidden]">
+            <div class="text-center">
+              <h2 class="text-xl font-bold mb-2">Educational Institutions</h2>
+              <p class="text-sm">Efficiently manage campus visitors, ensuring a safe and organized environment for
+                students and staff.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="group w-96 h-72 [perspective:1000px]">
+        <div
+          class="relative w-full h-full transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
+          <div
+            class="absolute w-full h-full bg-black text-white flex items-center justify-center rounded-lg p-4 [backface-visibility:hidden]">
+            <img src="src/images/Healthcare.png" alt="Educational Institutions"
+              class="absolute inset-0 w-full h-full object-cover opacity-50 rounded-lg">
+            <div class="text-center relative z-10">
+              <h2 class="text-xl font-bold mb-2">Healthcare Facilities</h2>
+              <p class="text-sm">Maintain a secure and smooth check-in process for patients, visitors, and vendors in
+                hospitals and clinics.</p>
+            </div>
+          </div>
+          <div
+            class="absolute w-full h-full bg-[#DB3D5B] text-white flex items-center justify-center rounded-lg p-4 [transform:rotateY(180deg)] [backface-visibility:hidden]">
+            <div class="text-center">
+              <h2 class="text-xl font-bold mb-2">Healthcare Facilities</h2>
+              <p class="text-sm">Maintain a secure and smooth check-in process for patients, visitors, and vendors in
+                hospitals and clinics.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="group w-96 h-72 [perspective:1000px]">
+        <div
+          class="relative w-full h-full transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
+          <div
+            class="absolute w-full h-full bg-black text-white flex items-center justify-center rounded-lg p-4 [backface-visibility:hidden]">
+            <img src="src/images/Govt.png" alt="Educational Institutions"
+              class="absolute inset-0 w-full h-full object-cover opacity-50 rounded-lg">
+            <div class="text-center relative z-10">
+              <h2 class="text-xl font-bold mb-2">Government Organizations</h2>
+              <p class="text-sm">Ensure high-security standards with detailed visitor tracking and controlled access
+                management..</p>
+            </div>
+          </div>
+          <div
+            class="absolute w-full h-full bg-[#DB3D5B] text-white flex items-center justify-center rounded-lg p-4 [transform:rotateY(180deg)] [backface-visibility:hidden]">
+            <div class="text-center">
+              <h2 class="text-xl font-bold mb-2">Government Organizations</h2>
+              <p class="text-sm">Ensure high-security standards with detailed visitor tracking and controlled access
+                management..</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="group w-96 h-72 [perspective:1000px]">
+        <div
+          class="relative w-full h-full transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
+          <div
+            class="absolute w-full h-full bg-black text-white flex items-center justify-center rounded-lg p-4 [backface-visibility:hidden]">
+            <img src="src/images/Residential.png" alt="Educational Institutions"
+              class="absolute inset-0 w-full h-full object-cover opacity-50 rounded-lg">
+            <div class="text-center relative z-10">
+              <h2 class="text-xl font-bold mb-2">Residential Communities</h2>
+              <p class="text-sm">Simplify visitor access and improve security in gated communities and apartment
+                complexes.</p>
+            </div>
+          </div>
+          <div
+            class="absolute w-full h-full bg-[#DB3D5B] text-white flex items-center justify-center rounded-lg p-4 [transform:rotateY(180deg)] [backface-visibility:hidden]">
+            <div class="text-center">
+              <h2 class="text-xl font-bold mb-2">Residential Communities</h2>
+              <p class="text-sm">Simplify visitor access and improve security in gated communities and apartment
+                complexes.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="group w-96 h-72 [perspective:1000px]">
+        <div
+          class="relative w-full h-full transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
+          <div
+            class="absolute w-full h-full bg-black text-white flex items-center justify-center rounded-lg p-4 [backface-visibility:hidden]">
+            <img src="src/images/Resort.png" alt="Educational Institutions"
+              class="absolute inset-0 w-full h-full object-cover opacity-50 rounded-lg">
+            <div class="text-center relative z-10">
+              <h2 class="text-xl font-bold mb-2">Hotels and Resorts</h2>
+              <p class="text-sm">To streamline guest check-ins, manage visitor records, and ensure security for both
+                guests and employees.</p>
+            </div>
+          </div>
+          <div
+            class="absolute w-full h-full bg-[#DB3D5B] text-white flex items-center justify-center rounded-lg p-4 [transform:rotateY(180deg)] [backface-visibility:hidden]">
+            <div class="text-center">
+              <h2 class="text-xl font-bold mb-2">Hotels and Resorts</h2>
+              <p class="text-sm">To streamline guest check-ins, manage visitor records, and ensure security for both
+                guests and employees.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Repeat for remaining cards -->
+    </div>
+  </div>
+  </section>
+
+
+ <!-- Section 5 -->
+  <section>
+
+    <div class="max-w-7xl max-md:max-w-xl mx-auto p-4 font-inter py-12">
+      <div class="flex flex-col items-center text-center px-6  w-full">
+        <!-- Stylish Badge -->
+        <!-- <div class="relative inline-block text-[#77BD42] lg:text-4xl font-bold px-6 py-2 rounded-full  ">
+                          Maximize Your Investment in Biometric Technology
+                        </div> -->
+
+        <!-- Main Heading with Gradient Effect -->
+        <h2 class=" md:text-3xl font-medium text-gray-900 ">
+          Sync Your Attendance with HRMS in Real Time
+        </h2>
+
+        <!-- Subtext with Floating Effect -->
+        <p class="mt-3 max-w-5xl  text-gray-700 leading-relaxed  px-6 py-2 rounded-xl   transition duration-300">
+          By integrating your biometric devices with In4 CloudHR, you're getting more out of your existing systems.
+          There's no need for additional hardware or costly upgrades—just plug and play for a more efficient,
+          cost-effective payroll process. </p>
+
+        <!-- Accent Line for Aesthetic Touch -->
+        <div class="mt-6 w-16 h-1 bg-[#76BB46] rounded-full"></div>
+      </div>
+
+
+
+      <div class="grid lg:gap-32 lg:grid-cols-2 lg:items-center mt-10 ">
+        <div>
+          <div class="mt-4 space-y-12">
+            <div class="flex">
+              <div class="flex-shrink-0">
+                <div class="flex items-center justify-center w-12 h-12 rounded-md">
+                  <svg width="50px" height="50px" viewBox="0 0 48 48" version="1" xmlns="http://www.w3.org/2000/svg"
+                    enable-background="new 0 0 48 48">
+                    <path fill="#3F51B5"
+                      d="M39,43H9c-2.2,0-4-1.8-4-4V9c0-2.2,1.8-4,4-4h30c2.2,0,4,1.8,4,4v30C43,41.2,41.2,43,39,43z">
+                    </path>
+                    <path fill="#B3E5FC"
+                      d="M33.6,25.4c0.1-0.4,0.1-0.9,0.1-1.4s0-0.9-0.1-1.4l2.8-2c0.3-0.2,0.4-0.6,0.2-0.9l-2.7-4.6 c-0.2-0.3-0.5-0.4-0.8-0.3L30,16.3c-0.7-0.6-1.5-1-2.4-1.4l-0.3-3.4c0-0.3-0.3-0.6-0.6-0.6h-5.3c-0.3,0-0.6,0.3-0.6,0.6L20.4,15 c-0.9,0.3-1.6,0.8-2.4,1.4l-3.1-1.4c-0.3-0.1-0.7,0-0.8,0.3l-2.7,4.6c-0.2,0.3-0.1,0.7,0.2,0.9l2.8,2c-0.1,0.4-0.1,0.9-0.1,1.4 s0,0.9,0.1,1.4l-2.8,2c-0.3,0.2-0.4,0.6-0.2,0.9l2.7,4.6c0.2,0.3,0.5,0.4,0.8,0.3l3.1-1.4c0.7,0.6,1.5,1,2.4,1.4l0.3,3.4 c0,0.3,0.3,0.6,0.6,0.6h5.3c0.3,0,0.6-0.3,0.6-0.6l0.3-3.4c0.9-0.3,1.6-0.8,2.4-1.4l3.1,1.4c0.3,0.1,0.7,0,0.8-0.3l2.7-4.6 c0.2-0.3,0.1-0.7-0.2-0.9L33.6,25.4z M24,29c-2.8,0-5-2.2-5-5c0-2.8,2.2-5,5-5c2.8,0,5,2.2,5,5C29,26.8,26.8,29,24,29z">
+                    </path>
+                  </svg>
+                </div>
+              </div>
+              <div class="ml-4">
+                <h4 class="text-xl font-bold leadi ">Automatic Data Sync</h4>
+                <p class="mt-2 ">Experience seamless video integration with enhanced streaming capabilities, providing a
+                  better and more uninterrupted learning experience.</p>
+              </div>
+            </div>
+            <div class="flex">
+              <div class="flex-shrink-0">
+                <div class="flex items-center justify-center w-12 h-12 rounded-md">
+                  <svg fill="#000000" width="50px" height="50px" viewBox="0 0 96 96" id="Layer_1_1_" version="1.1"
+                    xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <path
+                      d="M60,35.11v9.259c2.345,3.942,9.074,6.799,17,6.799s14.655-2.857,17-6.799V35.11c-3.528,3.38-9.819,5.644-17,5.644  S63.528,38.491,60,35.11z"
+                      fill="#ee1be7" style=""></path>
+                    <path
+                      d="M65.701,75.936c-0.836,2.491-2.05,4.809-3.581,6.881c2.9,3.349,8.475,5.612,14.88,5.612c4.694,0,8.944-1.21,12.023-3.18  C92.092,83.28,94,81,94,78v-5.648C90.472,75.734,84.181,78,77,78C72.945,78,69.008,77.27,65.701,75.936z"
+                      fill="#ee1be7" style=""></path>
+                    <path
+                      d="M60,47.524v3.153c2.885,2.997,5.032,6.707,6.143,10.84C69.247,62.845,73.072,63.58,77,63.58c7.926,0,14.655-2.856,17-6.798  v-9.258c-3.528,3.38-9.819,5.644-17,5.644S63.528,50.905,60,47.524z"
+                      fill="#ee1be7" style=""></path>
+                    <path
+                      d="M66.655,63.882C66.878,65.222,67,66.597,67,68c0,2.067-0.257,4.075-0.732,5.998C69.363,75.294,73.117,76,77,76  c7.926,0,14.655-2.86,17-6.805v-9.259c-3.528,3.38-9.819,5.644-17,5.644C73.281,65.58,69.752,64.991,66.655,63.882z"
+                      fill="#ee1be7" style=""></path>
+                    <path
+                      d="M89,2.245V2c-6.406,0-11.605,5.126-11.742,11.499l-0.516,0C76.605,7.127,71.406,2,65,2v0.245  c0,6.234,4.857,11.321,10.991,11.717L76,20h2l-0.009-6.038C84.134,13.576,89,8.485,89,2.245z"
+                      fill="#ee1be7" style=""></path>
+                    <path
+                      d="M77.995,20.029L78,28.499L76,28.5l-0.005-8.471C67.078,20.335,60,24.648,60,29.93v2.026c2.345,3.942,9.074,6.799,17,6.799  s14.655-2.857,17-6.799V29.93C94,24.646,86.917,20.332,77.995,20.029z"
+                      fill="#ee1be7" style=""></path>
+                    <path
+                      d="M26.331,21.743c0.347,0.312,0.862,0.343,1.242,0.076L45.622,9.185l-0.608,3.651l1.973,0.328l1-6  c0.091-0.544-0.277-1.06-0.822-1.15l-6-1l-0.329,1.973l3.586,0.598l-17.344,12.14l-9.409-8.468  c-0.362-0.326-0.904-0.343-1.287-0.043l-14,11l1.235,1.572l13.339-10.48L26.331,21.743z"
+                      fill="#ee1be7" style=""></path>
+                    <rect height="12" width="2" x="6" y="24" fill="#ee1be7" style=""></rect>
+                    <rect height="15" width="2" x="11" y="21" fill="#ee1be7" style=""></rect>
+                    <rect height="19" width="2" x="16" y="17" fill="#ee1be7" style=""></rect>
+                    <rect height="15" width="2" x="21" y="21" fill="#ee1be7" style=""></rect>
+                    <rect height="12" width="2" x="26" y="24" fill="#ee1be7" style=""></rect>
+                    <rect height="13" width="2" x="31" y="23" fill="#ee1be7" style=""></rect>
+                    <rect height="17" width="2" x="36" y="19" fill="#ee1be7" style=""></rect>
+                    <rect height="21" width="2" x="41" y="15" fill="#ee1be7" style=""></rect>
+                    <path
+                      d="M39,42c-14.359,0-26,11.641-26,26c0,14.359,11.641,26,26,26s26-11.641,26-26C65,53.641,53.359,42,39,42z M59.285,55.134  l1,1.732l-2.598,1.5l-1-1.732L59.285,55.134z M38,44h2v7h-2V44z M37,71l9-15l5,3L38,79l-10-7l3-5L37,71z M27.866,46.716l1.5,2.598  l-1.732,1l-1.5-2.598L27.866,46.716z M15,67h5v2h-5V67z M18.715,80.866l-1-1.732l2.598-1.5l1,1.732L18.715,80.866z M20.313,58.366  l-2.598-1.5l1-1.732l2.598,1.5L20.313,58.366z M27.866,89.284l-1.732-1l1.5-2.598l1.732,1L27.866,89.284z M40,92h-2v-7h2V92z   M50.134,89.284l-1.5-2.598l1.732-1l1.5,2.598L50.134,89.284z M50.366,50.313l-1.732-1l1.5-2.598l1.732,1L50.366,50.313z   M59.285,80.866l-2.598-1.5l1-1.732l2.598,1.5L59.285,80.866z M58,69v-2h5v2H58z"
+                      fill="#ee1be7" style=""></path>
+                  </svg>
+                </div>
+              </div>
+              <div class="ml-4">
+                <h4 class="text-xl font-bold leadi ">Real-Time Updates</h4>
+                <p class="mt-2 ">As employees clock in and out, their attendance records are instantly reflected in your
+                  payroll system for seamless processing.</p>
+              </div>
+            </div>
+            <div class="flex">
+              <div class="flex-shrink-0">
+                <div class="flex items-center justify-center w-12 h-12 rounded-md">
+                  <svg width="50px" height="50px" viewBox="0 0 1000 1000" id="Layer_2" version="1.1"
+                    xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+
+                    <g fill="#491589" style="">
+
+                      <path
+                        d="M668.73,801.293h-11.97c-4.42,0-8.76-1.21-12.55-3.49l-22.31-13.47   c-36.39-21.98-62.13-57.08-72.64-97.18h-98.52c-3.53,13.46-8.771,26.36-15.56,38.39c-13.43,23.8-32.9,44.19-57.08,58.79   l-22.31,13.47c-3.79,2.28-8.13,3.49-12.55,3.49h-11.97c-13.4,0-24.27,10.87-24.27,24.27h386c0-6.7-2.72-12.77-7.11-17.16   C681.5,804.013,675.43,801.293,668.73,801.293z"
+                        style="" fill="#491589"></path>
+
+                      <path
+                        d="M152.088,632.148c0,16.569,13.431,30,30,30h635.823c16.569,0,30-13.431,30-30v-38.855H152.088   V632.148z"
+                        style="" fill="#491589"></path>
+
+                      <path
+                        d="M664.74,442.894h-13.341V328.925c0-7.995-6.505-14.5-14.5-14.5c-7.996,0-14.5,6.505-14.5,14.5   v113.969h-13.341c-0.177,0-0.378,0-0.567,0.327c-0.189,0.327-0.088,0.501,0,0.654l27.842,48.223   c0.089,0.153,0.189,0.327,0.566,0.327c0.378,0,0.478-0.174,0.567-0.327l27.842-48.223c0.088-0.153,0.189-0.327,0-0.654   C665.117,442.894,664.917,442.894,664.74,442.894z"
+                        style="" fill="#491589"></path>
+
+                      <path
+                        d="M751.697,314.752c-0.089-0.153-0.189-0.327-0.566-0.327s-0.478,0.174-0.566,0.327l-27.842,48.223   c-0.088,0.153-0.189,0.327,0,0.654c0.189,0.327,0.39,0.327,0.566,0.327h13.341v113.969c0,7.995,6.505,14.5,14.5,14.5   c7.996,0,14.501-6.505,14.501-14.5V363.956h13.341c0.177,0,0.377,0,0.566-0.327c0.189-0.327,0.088-0.501,0-0.654L751.697,314.752z"
+                        style="" fill="#491589"></path>
+
+                      <path
+                        d="M817.912,174.437H182.088c-16.569,0-30,13.431-30,30v363.855h695.823V204.437   C847.912,187.868,834.481,174.437,817.912,174.437z M754.348,225.305h28c6.875,0,12.5,5.625,12.5,12.5s-5.625,12.5-12.5,12.5h-28   c-6.875,0-12.5-5.625-12.5-12.5S747.473,225.305,754.348,225.305z M670.848,225.305h28c6.875,0,12.5,5.625,12.5,12.5   s-5.625,12.5-12.5,12.5h-28c-6.875,0-12.5-5.625-12.5-12.5S663.973,225.305,670.848,225.305z M207.833,315.925h100.015   c6.903,0,12.5,5.597,12.5,12.5c0,6.903-5.597,12.5-12.5,12.5H207.833c-6.903,0-12.5-5.597-12.5-12.5   C195.333,321.522,200.93,315.925,207.833,315.925z M207.833,365.925h34.015c6.903,0,12.5,5.596,12.5,12.5   c0,6.903-5.597,12.5-12.5,12.5h-34.015c-6.903,0-12.5-5.597-12.5-12.5C195.333,371.521,200.93,365.925,207.833,365.925z    M207.833,415.925h34.015c6.903,0,12.5,5.596,12.5,12.5c0,6.903-5.597,12.5-12.5,12.5h-34.015c-6.903,0-12.5-5.597-12.5-12.5   C195.333,421.521,200.93,415.925,207.833,415.925z M307.848,490.925H207.833c-6.903,0-12.5-5.597-12.5-12.5   c0-6.903,5.597-12.5,12.5-12.5h100.015c6.903,0,12.5,5.597,12.5,12.5C320.348,485.328,314.751,490.925,307.848,490.925z    M328.181,440.925h-34.014c-6.904,0-12.5-5.597-12.5-12.5c0-6.904,5.596-12.5,12.5-12.5h34.014c6.904,0,12.5,5.596,12.5,12.5   C340.681,435.328,335.085,440.925,328.181,440.925z M527.181,490.925H364.5c-6.904,0-12.5-5.597-12.5-12.5   c0-6.903,5.596-12.5,12.5-12.5h162.681c6.904,0,12.5,5.597,12.5,12.5C539.681,485.328,534.084,490.925,527.181,490.925z    M527.181,440.925H385.514c-6.903,0-12.5-5.597-12.5-12.5c0-6.903,5.597-12.5,12.5-12.5h141.667c6.904,0,12.5,5.597,12.5,12.5   C539.681,435.328,534.084,440.925,527.181,440.925z M527.181,390.925H294.167c-6.904,0-12.5-5.597-12.5-12.5   c0-6.904,5.596-12.5,12.5-12.5h233.014c6.904,0,12.5,5.596,12.5,12.5C539.681,385.328,534.084,390.925,527.181,390.925z    M527.181,340.925H364.5c-6.904,0-12.5-5.597-12.5-12.5c0-6.903,5.596-12.5,12.5-12.5h162.681c6.904,0,12.5,5.597,12.5,12.5   C539.681,335.328,534.084,340.925,527.181,340.925z M574.848,237.805c0-6.875,5.625-12.5,12.5-12.5h28   c6.875,0,12.5,5.625,12.5,12.5s-5.625,12.5-12.5,12.5h-28C580.473,250.305,574.848,244.68,574.848,237.805z M686.956,456.375   l-27.842,48.223c-4.637,8.032-12.942,12.827-22.217,12.827c-9.274,0-17.579-4.795-22.217-12.827l-27.842-48.223   c-4.637-8.032-4.637-17.623,0-25.654c2.556-4.427,6.225-7.87,10.558-10.07v-91.726c0-21.78,17.72-39.5,39.5-39.5   c21.781,0,39.5,17.72,39.5,39.5v91.726c4.333,2.2,8.003,5.644,10.558,10.07C691.594,438.752,691.594,448.343,686.956,456.375z    M801.189,376.129c-2.556,4.427-6.226,7.87-10.558,10.07v91.725c0,21.78-17.72,39.5-39.501,39.5c-21.781,0-39.5-17.72-39.5-39.5   v-91.725c-4.332-2.2-8.003-5.644-10.558-10.07c-4.637-8.031-4.637-17.622,0-25.654l27.842-48.223   c4.637-8.032,12.942-12.827,22.217-12.827c9.274,0,17.58,4.795,22.217,12.827l27.842,48.223   C805.826,358.507,805.826,368.098,801.189,376.129z"
+                        style="" fill="#491589"></path>
+
+                    </g>
+
+                  </svg>
+                </div>
+              </div>
+              <div class="ml-4">
+                <h4 class="text-xl font-bold leadi ">Integrations with Multibrand and Multiple Location Devices</h4>
+                <p class="mt-2 ">Whether using fingerprint scanners, facial recognition, or other biometric devices, our
+                  software integrates with leading biometric models, providing a versatile solution.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div aria-hidden="true" class="mt-10 lg:mt-0">
+          <img width="600" height="600"
+            src="https://images.unsplash.com/photo-1516542076529-1ea3854896f2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHwxNHx8Y29tcHV0ZXJ8ZW58MHwwfHx8MTY5OTE3MDk1N3ww&ixlib=rb-4.0.3&q=80&w=1080"
+            class="mx-auto rounded-lg shadow-lg dark-bg-gray-500" style="color:transparent">
+        </div>
+      </div>
+  </section>
+
+ <!-- Section 6 -->
+  <section class="th_feature_tab_section bg-[#FBE9EB]  h-auto">
+    <div id="whats_inside" class="inside">
+      <div class="text-center pb-8 mb-6 pt-3">
+        <div class="bg-[#DB3D5B] animate-gradient-x text-white rounded-lg shadow-lg p-4 max-w-xl mx-auto font-inter">
+          <h2 class="text-3xl font-medium text-center">
+            Features of Pro-people HRMS
+          </h2>
+          <marquee class="mt-4 text-base font-italic" behavior="scroll" direction="left" scrollamount="3">
+            A user-friendly HR management solution
+          </marquee>
+        </div>
+      </div>
+      <div class="container mx-auto mt-8 h-full">
+        <div class="border rounded-lg flex flex-col lg:flex-row gap-4" x-data="{ activeTab: 'Employee Management' }">
+          <!-- Left Sidebar (Tab Navigation) -->
+          <div class="w-full lg:w-72 h-full bg-[#F2B5BC] p-6 border-r">
+            <nav>
+              <ul class="space-y-3">
+                <li>
+                  <button class="w-full text-left text-lg font-medium px-5 py-4 rounded-lg transition-colors"
+                    :class="activeTab === 'Employee Management' ? 'bg-[#DB3D5B] text-white' : 'hover:bg-gray-100 text-gray-700'"
+                    @click="activeTab = 'Employee Management'">
+                    Employee Management
+                  </button>
+                </li>
+                <li>
+                  <button class="w-full text-left text-lg font-medium px-5 py-4 rounded-lg transition-colors"
+                    :class="activeTab === ' Payroll Management' ? 'bg-[#DB3D5B] text-white' : 'hover:bg-gray-100 text-gray-700'"
+                    @click="activeTab = ' Payroll Management'">
+                    Payroll Management
+                  </button>
+                </li>
+                <li>
+                  <button class="w-full text-left text-lg font-medium px-5 py-4 rounded-lg transition-colors"
+                    :class="activeTab === 'Leave Management' ? 'bg-[#DB3D5B] text-white' : 'hover:bg-gray-100 text-gray-700'"
+                    @click="activeTab = 'Leave Management'">
+                    Leave Management
+                  </button>
+                </li>
+                <li>
+                  <button class="w-full text-left text-lg font-medium px-5 py-4 rounded-lg transition-colors"
+                    :class="activeTab === 'Detailed HRMS Reports' ? 'bg-[#DB3D5B] text-white' : 'hover:bg-gray-100 text-gray-700'"
+                    @click="activeTab = 'Detailed HRMS Reports'">
+                    Detailed HRMS Reports
+                  </button>
+                </li>
+                <li>
+                  <button class="w-full text-left text-lg font-medium px-5 py-4 rounded-lg transition-colors"
+                    :class="activeTab === 'Attendance Management' ? 'bg-[#DB3D5B] text-white' : 'hover:bg-gray-100 text-gray-700'"
+                    @click="activeTab = 'Attendance Management'">
+                    Attendance Management
+                  </button>
+                </li>
+              </ul>
+            </nav>
+          </div>
+
+          <!-- Tab Content -->
+          <div class="w-full lg:w-5/6 p-6 flex flex-col gap-6">
+            <!-- Employee Management -->
+            <div x-show="activeTab === 'Employee Management'" class="flex flex-col lg:flex-row  gap-6">
+              <div class="lg:w-1/2">
+                <h5 class="text-2xl font-semibold mb-2 ml-5 ">Employee Management Simplified</h5>
+                <p class="text-gray-700 text-lg mb-4 ml-5">
+                  Make managing your team easier and faster. This feature helps HR teams save time and stay organized.
+                  Here’s what it offers
+                </p>
+                <ul class="list-disc list-outside text-gray-800 text-md pl-5">
+                  <h5 class="text-2xl font-semibold mb-2">Multi-location Support</h5>
+                  <li class="mb-2">
+                    Manage employees across multiple locations or branches from a central dashboard.
+                  </li>
+                  <li class="mb-2">
+                    Track location-wise attendance, leave, and performance easily.
+                  </li>
+
+                  <h5 class="text-2xl font-semibold mb-2 mt-5">All Employee Data in One Place</h5>
+                  <li class="mb-2">
+                    Safely store and access employee information anytime.
+                  </li>
+                  <li class="mb-2">
+                    Manage employee lifecycle: warnings, terminations, and promotions.
+                  </li>
+                  <li>
+                    View personal details, job history, and performance records.
+                  </li>
+                </ul>
+              </div>
+              <img class="w-52 h-auto lg:ml-20 lg:w-1/2" src="src/images/Employee Management (1).png"
+                alt="Employee Management">
+            </div>
+            <!-- Payroll - Simplify -->
+            <div x-show="activeTab === ' Payroll Management'" class="flex flex-col lg:flex-row  gap-6">
+              <div class="lg:w-1/2">
+                <h5 class="text-2xl font-semibold mb-2 ml-5">The Easiest Way to Manage Payroll</h5>
+                <p class="text-gray-700 text-md mb-4 ml-5">
+                  Whether you’re managing payroll for a small team or a large workforce, our system is built to save
+                  time, reduce errors, and ensure every paycheck is processed smoothly.
+                </p>
+                <ul class="list-disc list-outside text-gray-800 text-md pl-5">
+                  <h5 class="text-2xl font-semibold mb-2">Deductions Management</h5>
+                  <li class="mb-2">Provident Fund (PF)</li>
+                  <li class="mb-2">Employee State Insurance (ESI)</li>
+                  <li class="mb-2">Late fines</li>
+                  <li class="mb-2">Additional custom deductions specific to your organization.</li>
+
+                  <h5 class="text-2xl font-semibold mb-2 mt-5">Effortless Payslip Generation</h5>
+                  <li class="mb-2">
+                    Generate payslips for individual employees or the entire team with just a few clicks.
+                  </li>
+                  <li class="mb-2">Ensure accuracy with automated calculations and detailed breakdowns.</li>
+
+                  <h5 class="text-2xl font-semibold mb-2 mt-5">Online Payslip Access</h5>
+                  <li class="mb-2">Allow employees to view and download payslips anytime, anywhere.</li>
+                  <li>Accessible through both web and mobile platforms for convenience.</li>
+                </ul>
+              </div>
+              <img class="w-52 h-auto lg:ml-auto lg:w-1/2" src="src/images/Payroll.png" alt="Payroll - Simplify">
+            </div>
+            <!-- Leave Management -->
+            <div x-show="activeTab === 'Leave Management'" class="flex flex-col lg:flex-row  gap-6">
+              <div class="lg:w-1/2">
+                <h5 class="text-2xl font-semibold mb-2 ml-5">Simplified leave Management</h5>
+                <p class="text-gray-700 text-md mb-4 ml-5">
+                  Managing employee leaves can be a time-consuming task, but with the Leave Management feature in our
+                  Pro-People HRMS, it becomes simple, efficient, and stress-free.
+                </p>
+                <ul class="list-disc list-outside text-gray-800 text-md pl-5">
+                  <h5 class="text-2xl font-semibold mb-2">Quick Leave Requests & Approvals</h5>
+                  <li class="mb-2">Submit and approve leave requests quickly through automated workflows.</li>
+
+                  <h5 class="text-2xl font-semibold mb-2 mt-5">Easy Leave Configuration Setup</h5>
+                  <li class="mb-2">
+                    Customize leave policies like carry-forward, encashment, and region-based rules.
+                  </li>
+
+                  <h5 class="text-2xl font-semibold mb-2 mt-5">Real-Time Alerts and Updates</h5>
+                  <li class="mb-2">Instant notifications for leave approvals, rejections, and balances.</li>
+
+                  <h5 class="text-2xl font-semibold mb-2 mt-5">Payroll Integration</h5>
+                  <li>Sync leave data with payroll for accurate salary calculations.</li>
+                </ul>
+              </div>
+              <img class="w-52 h-auto lg:ml-auto lg:w-1/2" src="src/images/Leave.png" alt="Leave Management">
+            </div>
+            <!-- Detailed HRMS Reports -->
+            <div x-show="activeTab === 'Detailed HRMS Reports'" class="flex flex-col lg:flex-row  gap-6">
+              <div class="lg:w-1/2">
+                <h5 class="text-2xl font-semibold mb-2 ml-5">HRMS Reports: A Data-Driven Approach to HR Management
+                </h5>
+                <p class="text-gray-700 text-md mb-4 ml-5">
+                  Our HRMS reports provide an intuitive and centralized view of all your HR operations. Accessible via
+                  desktop and mobile, these reports ensure you’re always informed, no matter where you are
+                </p>
+                <ul class="list-disc list-outside text-gray-800 text-lg pl-5">
+                  <h5 class="text-2xl font-semibold mb-2">Attendance and Leave Reports</h5>
+                  <li>Gain insights into leave usage for better workload management.</li>
+
+                  <h5 class="text-2xl font-semibold mb-2 mt-5">Payroll Analytics</h5>
+                  <li>View salary breakdowns, deductions, and reimbursements.</li>
+
+                  <h5 class="text-2xl font-semibold mb-2 mt-5">Recruitment and Onboarding Reports</h5>
+                  <li>Track candidate sourcing, interviews, and offer conversions.</li>
+                </ul>
+              </div>
+              <img class="w-52 h-auto lg:ml-auto lg:w-1/2" src="src/images/need2024-12-06 at 11.20.25_20fe4bd6.jpg"
+                alt="Detailed HRMS Reports">
+            </div>
+            <!-- Attendance Management -->
+            <div x-show="activeTab === 'Attendance Management'" class="flex flex-col lg:flex-row  gap-6">
+              <div class="lg:w-1/2">
+                <h5 class="text-2xl font-semibold mb-2 ml-5">Easy Attendance Management</h5>
+                <p class="text-gray-700 text-md mb-4 ml-5">
+                  Track employee attendance effortlessly with our HRMS. This helps businesses to streamline attendance
+                  tracking, reduce manual work, and ensure accurate data for payroll and performance evaluations.
+                </p>
+                <ul class="list-disc list-outside text-gray-800 text-md pl-5">
+                  <h5 class="text-2xl font-semibold mb-2">Real-Time Attendance Tracking</h5>
+                  <li>Record attendance via biometrics, mobile apps, or web systems.</li>
+                  <li>Track check-ins, check-outs, and work hours instantly.</li>
+                  <li>Handle shifts and multiple punches with real-time data.</li>
+
+                  <h5 class="text-2xl font-semibold mb-2 mt-5">Geofencing</h5>
+                  <li>Verify attendance with location-based accuracy.</li>
+                  <li>Customize settings to fit your organization.</li>
+                  <li>Enable IP-based secure attendance tracking.</li>
+
+                  <h5 class="text-2xl font-semibold mb-2 mt-5">Employee Self-Service</h5>
+                  <li>Employees can view attendance and apply for leaves.</li>
+                  <li>Regularize missed punches easily.</li>
+                  <li>Enhance transparency and satisfaction.</li>
+                </ul>
+              </div>
+              <img class="w-52 h-auto lg:ml-auto lg:w-1/2" src="src/images/Attendance management.png"
+                alt="Attendance Management">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+ <!-- Section 7 -->
+  <section class="bg-white py-16">
+    <div class="container mx-auto px-6 space-y-12">
+      <!-- Headline Section -->
+      <div class="text-center">
+        <h2 class="text-4xl font-semibold text-gray-800 leading-tight">
+          Customizable Visitor Management Flow
+        </h2>
+        <!-- Paragraph Section -->
+        <div class="text-center px-6 md:px-24">
+          <p class="text-md mt-5 text-gray-900 leading-relaxed">
+            Our Visitor Management System easily adjusts to the specific needs of each location. From check-in to
+            check-out, the complete visitor flow may be customized to meet your unique operating requirements. With this
+            level of customization, you can ensure your Visitor Management System aligns perfectly with your premise’s
+            requirements, offering efficiency, security, and a seamless experience.
+          </p>
+        </div>
+      </div>
+
+      <!-- First Image -->
+      <div class="relative mx-auto overflow-hidden rounded-xl shadow-xl max-w-7xl">
+        <img src="src/images/frt.png" alt="First Banner Image"
+          class="w-full h-auto object-cover transform transition-transform duration-700 hover:scale-105" />
+      </div>
+
+
+
+      <!-- Second Image -->
+      <div class="relative mx-auto overflow-hidden rounded-xl shadow-xl max-w-7xl">
+        <img src="src/images/direct walkin.png" alt="Second Banner Image"
+          class="w-full h-auto object-cover transform transition-transform duration-700 hover:scale-105" />
+      </div>
+
+      <!-- Call-to-Action Section -->
+      <div class="text-center">
+        <!-- Request a Demo Button -->
+        <button onclick="toggleModal()"
+          class="px-5 py-2.5 rounded-lg text-sm tracking-wider font-medium border border-current outline-none bg-[#DB3D5B] hover:bg-transparent text-white hover:text-red-700 transition-all duration-300">Request
+          a Demo</button>
+      </div>
+    </div>
+  </section>
+ <!-- Section 8 -->
+  <section class="bg-gray-100 space-y-1 p-10">
+    <h2 class="text-gray-900 sm:text-3xl text-xl font-medium text-center mb-16">Empower your business with
+      <span class=""> Industry-Specific </span> payroll <br> solutions designed for success!
+    </h2>
+    <!-- Toast Container -->
+    <div class="toast-container space-y-4"></div>
+    <div class="grid lg:grid-cols-4 md:grid-cols-2 gap-8 max-md:max-w-2xl">
+      <button
+        onclick="showToast('purple', 'Healthcare', 'Simplify payroll for healthcare professionals with solutions that handle complex shifts and compliance requirements seamlessly.')"
+        class="flex flex-col items-center justify-center p-4 bg-white  border-2 border-gray-200 hover:border-[#DB3D5B] rounded-2xl group transition-colors   duration-300">
+        <div class="mb-2 w-20 aspect-square flex items-center justify-center">
+          <div class="mb-2 flex justify-cente items-center h-14 w-14 rounded-md bg-[#DB3D5B] text-white">
+            <svg fill="#000000" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" class="p-2"
+              xmlns:xlink="http://www.w3.org/1999/xlink" width="80px" height="80px" viewBox="0 0 256 190"
+              enable-background="new 0 0 256 190" xml:space="preserve">
+              <path
+                d="M48.12,27.903C48.12,13.564,59.592,2,74.023,2c14.339,0,25.903,11.564,25.903,25.903
+                              C99.834,42.335,88.27,53.806,74.023,53.806C59.684,53.806,48.12,42.242,48.12,27.903z M191,139h-47V97c0-20.461-17.881-37-38-37H43
+                              C20.912,60,1.99,79.14,2,98v77c-0.026,8.533,6.001,12.989,12,13c6.014,0.011,12-4.445,12-13v-75h8v88h78v-88h8l0.081,50.37
+                              c-0.053,8.729,5.342,12.446,10.919,12.63h60C207.363,163,207.363,139,191,139z M251.652,56.921
+                              c-2.101-4.842-5.299-8.861-9.684-11.876c-3.837-2.741-8.222-4.476-12.972-5.116c-3.837-0.548-7.856-0.183-12.059,1.005
+                              c-5.207,1.553-9.409,4.294-12.333,8.313c-2.923-4.02-6.943-6.852-12.333-8.313c-4.202-1.188-8.13-1.553-12.059-1.005
+                              c-4.75,0.639-9.135,2.284-12.972,5.116c-4.294,3.015-7.582,7.126-9.684,11.876c-2.467,5.755-3.106,12.059-1.644,18.728
+                              c1.462,7.217,4.75,14.068,10.323,21.377c4.659,6.212,10.323,11.785,17.083,17.083c3.745,3.015,7.765,5.755,11.602,8.496l1.188,0.914
+                              c2.01,1.462,6.029,3.837,7.856,4.842c0.091,0.091,0.365,0.091,0.548,0.183c0.183-0.091,0.457-0.091,0.548-0.183
+                              c1.736-1.096,5.755-3.471,7.856-4.842l1.188-0.914c3.837-2.741,7.765-5.573,11.602-8.496c6.76-5.299,12.333-10.871,17.083-17.083
+                              c5.573-7.308,8.861-14.068,10.323-21.377C254.758,68.98,254.027,62.676,251.652,56.921z M246.81,74.278
+                              c-1.188,6.212-4.111,12.15-9.135,18.636c-4.294,5.755-9.501,10.871-15.896,15.896c-3.654,2.923-7.582,5.664-11.419,8.313
+                              l-1.188,0.914c-1.005,0.731-2.923,1.918-4.568,2.923c-1.644-1.005-3.563-2.192-4.568-2.923l-1.188-0.914
+                              c-3.746-2.649-7.674-5.39-11.419-8.313c-6.303-4.842-11.511-10.049-15.896-15.896c-1.736-2.467-3.289-4.75-4.659-6.943h10.962
+                              l4.111,10.688l8.313-22.016l11.785,31.06l8.496-22.29l1.005,2.741h10.78c0.731,1.644,2.467,2.741,4.476,2.741
+                              c2.741,0,5.024-2.192,5.024-5.024c0-2.741-2.192-5.024-5.024-5.024c-2.01,0-3.654,1.096-4.476,2.741h-7.582l-4.111-10.871
+                              l-8.496,22.29l-11.785-31.06l-8.405,22.199l-1.005-2.649h-16.261c-1.005-2.284-1.736-4.75-2.192-7.126
+                              c-1.096-5.39-0.639-10.232,1.37-14.708c1.644-3.746,4.02-6.76,7.308-9.135c3.015-2.101,6.303-3.471,10.049-4.02
+                              c3.015-0.457,6.029-0.091,9.227,0.731c4.02,1.188,6.852,3.197,8.953,6.121c0.548,0.731,1.005,1.553,1.553,2.284
+                              c0.183,0.457,0.548,0.914,0.731,1.37l2.923,4.568l2.923-4.568c0.365-0.457,0.548-0.914,0.731-1.37
+                              c0.548-0.914,1.005-1.644,1.553-2.284c2.101-3.015,5.024-5.024,8.953-6.121c3.197-1.005,6.212-1.188,9.227-0.731
+                              c3.746,0.548,6.943,1.736,10.049,4.02c3.289,2.284,5.755,5.299,7.308,9.135C247.541,64.047,247.997,68.98,246.81,74.278z"
+                fill="#fff"></path>
+            </svg>
+          </div>
+        </div>
+        <h5 class="text-center text-lg sm:text-base font-medium text-gray-900 group-hover:text-green-600">
+          Healthcare
+        </h5>
+      </button>
+      <button
+        onclick="showToast('purple', 'Education', 'Effortlessly manage payroll for academic staff, support personnel, and administrative teams, ensuring accuracy and transparency.')"
+        class="flex flex-col items-center justify-center p-4 bg-white  border-2 border-gray-200 hover:border-[#DB3D5B] rounded-2xl group transition-colors  duration-300">
+
+
+        <div class="mb-2 w-20 aspect-square flex items-center justify-center">
+          <div class="mb-2 flex justify-cente items-center h-14 w-14 rounded-md bg-[#DB3D5B] text-white">
+            <svg width="80px" height="80px" viewBox="0 0 48 48" id="svg5" version="1.1" xml:space="preserve" class="p-2"
+              xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+              <defs id="defs2" fill="#fff"></defs>
+              <g id="layer1" transform="translate(-242.00002,-377)" fill="#fff">
+                <path d="m 248.56071,413.9418 h 4 v 7 h -4 z" id="path52038" fill="#fff"></path>
+                <path
+                  d="m 285.54899,381.9418 c 0,0 -1.12948,0.0146 -2.3164,0.0215 -0.59346,0.003 -1.2014,0.005 -1.68555,0.002 -0.48416,-0.003 -0.9537,-0.0275 -0.86914,-0.0176 a 1,1 0 0 0 -1.11133,0.87695 1,1 0 0 0 0.87695,1.11133 c 0.32061,0.0376 0.5942,0.0267 1.0918,0.0293 0.42955,0.003 0.94733,0.003 1.46484,0 l -12.25976,11.44336 -3.34766,-5.02149 c -0.33202,-0.49827 -1.0245,-0.59511 -1.48047,-0.20703 l -20,17 c -0.42087,0.35803 -0.4716,0.98954 -0.11328,1.41016 0.35803,0.42087 0.98954,0.4716 1.41016,0.11328 l 19.14258,-16.27149 3.37695,5.06446 c 0.34252,0.51263 1.06279,0.59628 1.51367,0.17578 l 13.31836,-12.42973 v 2.69922 a 1,1 0 0 0 1,1 1,1 0 0 0 1,-1 v -5 a 1.0001,1.0001 0 0 0 -1.01172,-1 z"
+                  id="path30982" fill="#fff"></path>
+                <path
+                  d="m 251.56071,380.98477 a 1.045135,0.95680519 0 0 0 -1.04492,0.95703 v 1.56445 c -1.66026,0.40813 -2.91406,1.76055 -2.91406,3.38477 0,1.95093 1.80886,3.50975 3.95898,3.50976 1.06785,0 1.86914,0.72818 1.86914,1.59962 0,0.87145 -0.8013,1.5996 -1.86914,1.5996 -1.06784,0 -1.86718,-0.72815 -1.86719,-1.5996 a 1.045135,0.95680519 0 0 0 -1.04687,-0.95508 1.045135,0.95680519 0 0 0 -1.04492,0.95508 c 0,1.62421 1.2538,2.97663 2.91406,3.38476 v 1.56445 a 1.045135,0.95680519 0 0 0 1.04492,0.95703 1.045135,0.95680519 0 0 0 1.04492,-0.95703 v -1.56445 c 1.65991,-0.40868 2.91406,-1.76116 2.91406,-3.38476 0,-1.95093 -1.80886,-3.51172 -3.95898,-3.51172 -1.06785,0 -1.86719,-0.7262 -1.86719,-1.59766 0,-0.87145 0.79933,-1.59962 1.86719,-1.59961 1.06785,0 1.86914,0.72816 1.86914,1.59961 a 1.045135,0.95680519 0 0 0 1.04297,0.95508 1.045135,0.95680519 0 0 0 1.04687,-0.95508 c 0,-1.62362 -1.25415,-2.97609 -2.91406,-3.38477 v -1.56445 a 1.045135,0.95680519 0 0 0 -1.04492,-0.95703 z"
+                  id="path34618" fill="#fff"></path>
+                <path d="m 256.55567,408.9418 h 4 v 12 h -4 c 0,-4 0,-8 0,-12 z" id="path54017" fill="#fff">
+                </path>
+                <path d="m 264.55567,404.05291 h 4 v 16.88889 h -4 c 0,-5.62963 0,-11.25926 0,-16.88889 z"
+                  id="path54021" fill="#fff"></path>
+                <path d="m 272.55567,400.9418 h 4 v 20.00003 h -4 c 0,-6.66668 0,-13.33335 0,-20.00003 z" id="path54025"
+                  fill="#fff"></path>
+                <path d="m 280.55567,394.9418 h 4 v 26 h -4 c 0,-8.66667 0,-17.33333 0,-26 z" id="path54029"
+                  fill="#fff"></path>
+              </g>
+            </svg>
+          </div>
+        </div>
+        <h5 class="text-center text-lg sm:text-base font-medium text-gray-900 group-hover:text-green-600">
+          Education
+        </h5>
+      </button>
+      <button
+        onclick="showToast('purple', 'Manufacturing', 'Handle large workforces, shift-based payroll, and overtime calculations with precision and ease.')"
+        class="flex flex-col items-center justify-center p-4 bg-white border-2 border-gray-200 hover:border-[#DB3D5B] rounded-2xl group transition-colors  duration-300">
+        <div class="mb-2 w-20 aspect-square flex items-center justify-center">
+          <div class="mb-2 flex justify-cente items-center h-14 w-14 rounded-md bg-[#DB3D5B] text-white">
+            <svg fill="#000000" width="80px" height="80px" viewBox="0 0 56 56" id="Layer_1" version="1.1" class="p-2"
+              xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+              <g fill="#fff">
+                <path
+                  d="M48.2,25.3c-0.3-0.2-0.8-0.1-1.1,0.1l-7.7,6.1v-5.8c0-0.4-0.2-0.7-0.5-0.9c-0.3-0.2-0.7-0.1-1,0.1l-9.4,6.8L28,25.4   c0-0.3-0.2-0.7-0.5-0.8c-0.3-0.2-0.7-0.1-1,0l-11.3,6.8v-9.2c0.7-0.4,1.3-0.9,1.7-1.6c0.5,0.2,1.1,0.2,1.7,0.2c2.2,0,4.1-1.2,5.1-3   c0.3,0,0.6,0.1,1,0.1c4.1,0,7.4-3.3,7.4-7.4c0-4.1-3.3-7.5-7.4-7.5c-3.7,0-6.7,2.6-7.3,6.2c-2.6,0.5-4.5,2.7-4.7,5.4   c-1.9,0.3-3.4,2-3.4,4c0,0.1,0,0.2,0,0.2h-1c-0.6,0-1,0.4-1,1V52c0,0.6,0.4,1,1,1h39.5c0.6,0,1-0.4,1-1V26.2   C48.7,25.8,48.5,25.5,48.2,25.3z M11.3,18.6c0-1.2,0.9-2.1,2.1-2.1c0.1,0,0.2,0,0.3,0c0.3,0,0.6-0.1,0.8-0.3   c0.2-0.2,0.3-0.5,0.3-0.8c0-0.2,0-0.3,0-0.5c0-2,1.6-3.8,3.6-3.9c0.5,0,0.9-0.4,0.9-0.9C19.4,7.2,21.8,5,24.7,5   c3,0,5.4,2.4,5.4,5.5c0,3-2.4,5.4-5.4,5.4c-0.4,0-0.9-0.1-1.3-0.2c-0.5-0.1-1,0.1-1.2,0.6c-0.6,1.5-2,2.5-3.6,2.5   c-0.6,0-1.2-0.1-1.8-0.4c-0.3-0.1-0.6-0.1-0.9,0c-0.3,0.1-0.5,0.4-0.6,0.7c0,0.2-0.1,0.4-0.2,0.6c-0.1-0.5-0.5-0.8-1-0.8h-2.9   C11.3,18.8,11.3,18.7,11.3,18.6z M10.5,20.8C10.5,20.8,10.5,20.8,10.5,20.8h2.7v1.6H9.3v-1.6H10.5z M46.7,51H9.3V24.5h3.9v8.7   c0,0.4,0.2,0.7,0.5,0.9c0.3,0.2,0.7,0.2,1,0l11.4-6.8l0.5,6.4c0,0.4,0.2,0.7,0.6,0.8c0.3,0.2,0.7,0.1,1-0.1l9.3-6.7v5.9   c0,0.4,0.2,0.7,0.6,0.9c0.3,0.2,0.8,0.1,1.1-0.1l7.7-6.1V51z"
+                  fill="#fff"></path>
+                <path
+                  d="M40.3,48h4.3c0.6,0,1-0.4,1-1v-4.3c0-0.6-0.4-1-1-1h-4.3c-0.6,0-1,0.4-1,1V47C39.3,47.6,39.7,48,40.3,48z M41.3,43.7h2.3   V46h-2.3V43.7z"
+                  fill="#fff"></path>
+                <path
+                  d="M27.7,41.7h-4.3c-0.6,0-1,0.4-1,1V47c0,0.6,0.4,1,1,1h4.3c0.6,0,1-0.4,1-1v-4.3C28.7,42.2,28.2,41.7,27.7,41.7z M26.7,46   h-2.3v-2.3h2.3V46z"
+                  fill="#fff"></path>
+                <path
+                  d="M19.3,36.3h-4.3c-0.6,0-1,0.4-1,1v4.3c0,0.6,0.4,1,1,1h4.3c0.6,0,1-0.4,1-1v-4.3C20.3,36.8,19.8,36.3,19.3,36.3z    M18.3,40.7h-2.3v-2.3h2.3V40.7z"
+                  fill="#fff"></path>
+                <path
+                  d="M36.1,36.3h-4.3c-0.6,0-1,0.4-1,1v4.3c0,0.6,0.4,1,1,1h4.3c0.6,0,1-0.4,1-1v-4.3C37.1,36.8,36.7,36.3,36.1,36.3z    M35.1,40.7h-2.3v-2.3h2.3V40.7z"
+                  fill="#fff"></path>
+              </g>
+            </svg>
+          </div>
+        </div>
+        <h5 class="text-center text-lg sm:text-base font-medium text-gray-900 group-hover:text-green-600">
+          Manufacturing
+        </h5>
+      </button>
+      <button
+        onclick="showToast('purple', 'Retail', 'Streamline payroll for dynamic workforces, including part-time, seasonal, and full-time employees.')"
+        class="flex flex-col items-center justify-center p-4 bg-white  border-2 border-gray-200 hover:border-[#DB3D5B] rounded-2xl group transition-colors  duration-300">
+        <div class="mb-2 w-20 aspect-square flex items-center justify-center">
+          <div class="mb-2 flex justify-cente items-center h-14 w-14 rounded-md bg-[#DB3D5B] text-white">
+            <svg fill="#000000" width="80px" height="80px" class="p-2" viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M18 9.87V20H2V9.87a4.25 4.25 0 0 0 3-.38V14h10V9.5a4.26 4.26 0 0 0 3 .37zM3 0h4l-.67 6.03A3.43 3.43 0 0 1 3 9C1.34 9 .42 7.73.95 6.15L3 0zm5 0h4l.7 6.3c.17 1.5-.91 2.7-2.42 2.7h-.56A2.38 2.38 0 0 1 7.3 6.3L8 0zm5 0h4l2.05 6.15C19.58 7.73 18.65 9 17 9a3.42 3.42 0 0 1-3.33-2.97L13 0z"
+                fill="#fff"></path>
+            </svg>
+          </div>
+        </div>
+        <h5 class="text-center text-lg sm:text-base font-medium text-gray-900 group-hover:text-green-600">
+          Retail
+        </h5>
+      </button>
+      <button
+        onclick="showToast('purple', 'Hospitality', 'Manage diverse roles, gratuities, and shift schedules with our efficient payroll solutions.')"
+        class="flex flex-col items-center justify-center p-4 bg-white border-2 border-gray-200 hover:border-[#DB3D5B] rounded-2xl group transition-colors   duration-300">
+        <div class="mb-2 w-20 aspect-square flex items-center justify-center">
+          <div class="mb-2 flex justify-cente items-center h-14 w-14 rounded-md bg-[#DB3D5B] text-white">
+            <svg fill="#000000" width="80px" height="80px" class="p-2" viewBox="0 0 32 32"
+              xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M 15 3 L 15 5 L 13 5 L 13 7 L 15 7 L 15 9 L 17 9 L 17 7 L 19 7 L 19 5 L 17 5 L 17 3 Z M 6 5 L 6 28 L 15 28 L 15 25 L 17 25 L 17 28 L 26 28 L 26 5 L 21 5 L 21 7 L 24 7 L 24 26 L 19 26 L 19 23 L 13 23 L 13 26 L 8 26 L 8 7 L 11 7 L 11 5 Z M 11 11 L 11 13 L 13 13 L 13 11 Z M 15 11 L 15 13 L 17 13 L 17 11 Z M 19 11 L 19 13 L 21 13 L 21 11 Z M 11 15 L 11 17 L 13 17 L 13 15 Z M 15 15 L 15 17 L 17 17 L 17 15 Z M 19 15 L 19 17 L 21 17 L 21 15 Z M 11 19 L 11 21 L 13 21 L 13 19 Z M 15 19 L 15 21 L 17 21 L 17 19 Z M 19 19 L 19 21 L 21 21 L 21 19 Z"
+                fill="#fff"></path>
+            </svg>
+          </div>
+        </div>
+        <h5 class="text-center text-lg sm:text-base font-medium text-gray-900 group-hover:text-green-600">
+          Hospitality
+        </h5>
+      </button>
+      <button
+        onclick="showToast('purple', 'IT and Technology', 'Enable innovative companies to manage payroll efficiently with tech-forward solutions.')"
+        class="flex flex-col items-center justify-center p-4 bg-white  border-2 border-gray-200 hover:border-[#DB3D5B] rounded-2xl group transition-colors   duration-300">
+        <div class="mb-2 w-20 aspect-square flex items-center justify-center">
+          <div class="mb-2 flex justify-cente items-center h-14 w-14 rounded-md bg-[#DB3D5B] text-white">
+            <svg width="80" height="80" viewBox="0 0 1000 1000" id="Layer_2" version="1.1" xml:space="preserve"
+              xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+
+              <g fill="#fff">
+
+                <path
+                  d="M817.765,152.23h-635.53c-16.57,0-30,13.43-30,30v13.53c8.63-5.65,18.94-8.93,30-8.93h635.53   c11.07,0,21.37,3.28,30,8.93v-13.53C847.765,165.66,834.335,152.23,817.765,152.23z"
+                  fill="#fff"></path>
+
+                <path
+                  d="M182.235,681.96c-11.06,0-21.37-3.28-30-8.93v13.53c0,16.57,13.43,30,30,30h635.53   c16.57,0,30-13.43,30-30v-13.53c-8.63,5.65-18.93,8.93-30,8.93H182.235z"
+                  fill="#fff"></path>
+
+                <path
+                  d="M599.175,815.99l-1.15-0.51c-24.35-10.83-35.23-39.42-24.23-63.7l4.63-10.22h-156.85l4.63,10.22   c11,24.28,0.12,52.87-24.23,63.7l-1.15,0.51c-12.56,5.58-20.66,18.03-20.66,31.78h239.67c0-6.87-2.02-13.43-5.62-18.95   C610.615,823.29,605.455,818.78,599.175,815.99z"
+                  fill="#fff"></path>
+
+                <polygon points="381.884,489.315 488.744,538.376 488.744,444.806 381.884,395.745  " fill="#fff">
+                </polygon>
+
+                <polygon points="513.744,538.376 620.604,489.315 620.604,395.745 513.744,444.806  " fill="#fff">
+                </polygon>
+
+                <polygon points="501.244,329.464 399.342,376.25 501.244,423.035 603.146,376.25  " fill="#fff">
+                </polygon>
+
+                <path
+                  d="M817.765,211.83h-635.53c-16.57,0-30,13.43-30,30v385.13c0,16.56,13.43,30,30,30h635.53   c16.57,0,30-13.44,30-30V241.83C847.765,225.26,834.335,211.83,817.765,211.83z M197.432,260.812h171.952   c6.903,0,12.5,5.597,12.5,12.5c0,6.903-5.597,12.5-12.5,12.5H197.432c-6.903,0-12.5-5.597-12.5-12.5   C184.932,266.409,190.529,260.812,197.432,260.812z M241.596,438.728h-44.164c-6.903,0-12.5-5.597-12.5-12.5s5.597-12.5,12.5-12.5   h44.164c6.903,0,12.5,5.597,12.5,12.5S248.499,438.728,241.596,438.728z M289.748,388.062h-92.315c-6.903,0-12.5-5.597-12.5-12.5   c0-6.903,5.597-12.5,12.5-12.5h92.315c6.903,0,12.5,5.597,12.5,12.5C302.248,382.465,296.651,388.062,289.748,388.062z    M289.748,337.395h-92.315c-6.903,0-12.5-5.597-12.5-12.5c0-6.903,5.597-12.5,12.5-12.5h92.315c6.903,0,12.5,5.597,12.5,12.5   C302.248,331.798,296.651,337.395,289.748,337.395z M513.744,565.886v47.009c0,6.903-5.597,12.5-12.5,12.5   c-6.903,0-12.5-5.597-12.5-12.5v-47.009l-118.293-54.31l-36.212,23.723c-2.111,1.384-4.488,2.045-6.838,2.045   c-4.074,0-8.068-1.988-10.468-5.651c-3.783-5.774-2.169-13.523,3.607-17.306l36.345-23.81V376.25c0-0.61,0.044-1.214,0.131-1.807   c0.423-2.9,1.855-5.539,4.004-7.475c0.925-0.834,1.98-1.541,3.149-2.078l124.575-57.196v-51.799c0-6.903,5.597-12.5,12.5-12.5   c6.903,0,12.5,5.597,12.5,12.5v51.798l58.646,26.927l65.93,30.27c3.329,1.529,5.762,4.407,6.77,7.812   c0.336,1.134,0.514,2.328,0.514,3.549v114.326l36.345,23.81c5.775,3.783,7.39,11.531,3.606,17.306   c-2.399,3.663-6.394,5.651-10.468,5.651c-2.35,0-4.726-0.661-6.838-2.045l-36.212-23.723L513.744,565.886z M802.568,625.395   H675.099c-6.903,0-12.5-5.597-12.5-12.5c0-6.903,5.597-12.5,12.5-12.5h127.469c6.903,0,12.5,5.597,12.5,12.5   C815.068,619.798,809.471,625.395,802.568,625.395z M802.568,575.395h-44.163c-6.903,0-12.5-5.597-12.5-12.5   c0-6.903,5.597-12.5,12.5-12.5h44.163c6.903,0,12.5,5.597,12.5,12.5C815.068,569.798,809.471,575.395,802.568,575.395z"
+                  fill="#fff"></path>
+
+              </g>
+
+            </svg>
+          </div>
+        </div>
+        <h5 class="text-center text-lg sm:text-base font-medium text-gray-900 group-hover:text-green-600">
+          IT and Technology
+        </h5>
+      </button>
+      <button
+        onclick="showToast('purple', 'Non-Profit', 'Focus on your mission while we handle payroll with tools built for organizations with limited resources.')"
+        class="flex flex-col items-center justify-center p-4 bg-white border-2 border-gray-200 hover:border-[#DB3D5B] rounded-2xl group transition-colors  duration-300">
+        <div class="mb-2 w-20 aspect-square flex items-center justify-center">
+          <div class="mb-2 flex justify-cente items-center h-14 w-14 rounded-md bg-[#DB3D5B] text-white">
+            <svg width="80px" height="80px" viewBox="0 0 48 48" id="svg5" version="1.1" xml:space="preserve" class="p-2"
+              xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+              <defs id="defs2" fill="#fff"></defs>
+              <g id="layer1" transform="translate(-242.00002,-377)" fill="#fff">
+                <path d="m 248.56071,413.9418 h 4 v 7 h -4 z" id="path52038" fill="#fff"></path>
+                <path
+                  d="m 285.54899,381.9418 c 0,0 -1.12948,0.0146 -2.3164,0.0215 -0.59346,0.003 -1.2014,0.005 -1.68555,0.002 -0.48416,-0.003 -0.9537,-0.0275 -0.86914,-0.0176 a 1,1 0 0 0 -1.11133,0.87695 1,1 0 0 0 0.87695,1.11133 c 0.32061,0.0376 0.5942,0.0267 1.0918,0.0293 0.42955,0.003 0.94733,0.003 1.46484,0 l -12.25976,11.44336 -3.34766,-5.02149 c -0.33202,-0.49827 -1.0245,-0.59511 -1.48047,-0.20703 l -20,17 c -0.42087,0.35803 -0.4716,0.98954 -0.11328,1.41016 0.35803,0.42087 0.98954,0.4716 1.41016,0.11328 l 19.14258,-16.27149 3.37695,5.06446 c 0.34252,0.51263 1.06279,0.59628 1.51367,0.17578 l 13.31836,-12.42973 v 2.69922 a 1,1 0 0 0 1,1 1,1 0 0 0 1,-1 v -5 a 1.0001,1.0001 0 0 0 -1.01172,-1 z"
+                  id="path30982" fill="#fff"></path>
+                <path
+                  d="m 251.56071,380.98477 a 1.045135,0.95680519 0 0 0 -1.04492,0.95703 v 1.56445 c -1.66026,0.40813 -2.91406,1.76055 -2.91406,3.38477 0,1.95093 1.80886,3.50975 3.95898,3.50976 1.06785,0 1.86914,0.72818 1.86914,1.59962 0,0.87145 -0.8013,1.5996 -1.86914,1.5996 -1.06784,0 -1.86718,-0.72815 -1.86719,-1.5996 a 1.045135,0.95680519 0 0 0 -1.04687,-0.95508 1.045135,0.95680519 0 0 0 -1.04492,0.95508 c 0,1.62421 1.2538,2.97663 2.91406,3.38476 v 1.56445 a 1.045135,0.95680519 0 0 0 1.04492,0.95703 1.045135,0.95680519 0 0 0 1.04492,-0.95703 v -1.56445 c 1.65991,-0.40868 2.91406,-1.76116 2.91406,-3.38476 0,-1.95093 -1.80886,-3.51172 -3.95898,-3.51172 -1.06785,0 -1.86719,-0.7262 -1.86719,-1.59766 0,-0.87145 0.79933,-1.59962 1.86719,-1.59961 1.06785,0 1.86914,0.72816 1.86914,1.59961 a 1.045135,0.95680519 0 0 0 1.04297,0.95508 1.045135,0.95680519 0 0 0 1.04687,-0.95508 c 0,-1.62362 -1.25415,-2.97609 -2.91406,-3.38477 v -1.56445 a 1.045135,0.95680519 0 0 0 -1.04492,-0.95703 z"
+                  id="path34618" fill="#fff"></path>
+                <path d="m 256.55567,408.9418 h 4 v 12 h -4 c 0,-4 0,-8 0,-12 z" id="path54017" fill="#fff">
+                </path>
+                <path d="m 264.55567,404.05291 h 4 v 16.88889 h -4 c 0,-5.62963 0,-11.25926 0,-16.88889 z"
+                  id="path54021" fill="#fff"></path>
+                <path d="m 272.55567,400.9418 h 4 v 20.00003 h -4 c 0,-6.66668 0,-13.33335 0,-20.00003 z" id="path54025"
+                  fill="#fff"></path>
+                <path d="m 280.55567,394.9418 h 4 v 26 h -4 c 0,-8.66667 0,-17.33333 0,-26 z" id="path54029"
+                  fill="#fff"></path>
+              </g>
+            </svg>
+          </div>
+        </div>
+        <h5 class="text-center text-lg sm:text-base font-medium text-gray-900 group-hover:text-green-600">
+          Non-Profit
+        </h5>
+      </button>
+      <button
+        onclick="showToast('purple', 'Logistics and Transportation', 'Stay on schedule with payroll designed for mobile and remote teams.')"
+        class="flex flex-col items-center justify-center p-4 bg-white  border-2 border-gray-200 hover:border-[#DB3D5B] rounded-2xl group transition-colors   duration-300">
+
+        <div class="mb-2 w-20 aspect-square flex items-center justify-center">
+          <div class="mb-2 flex justify-cente items-center h-14 w-14 rounded-md bg-[#DB3D5B] text-white">
+            <svg fill="#000000" width="80px" height="80px" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"
+              class="p-2">
+              <path
+                d="M 0 6 L 0 8 L 19 8 L 19 23 L 12.84375 23 C 12.398438 21.28125 10.851563 20 9 20 C 7.148438 20 5.601563 21.28125 5.15625 23 L 4 23 L 4 18 L 2 18 L 2 25 L 5.15625 25 C 5.601563 26.71875 7.148438 28 9 28 C 10.851563 28 12.398438 26.71875 12.84375 25 L 21.15625 25 C 21.601563 26.71875 23.148438 28 25 28 C 26.851563 28 28.398438 26.71875 28.84375 25 L 32 25 L 32 16.84375 L 31.9375 16.6875 L 29.9375 10.6875 L 29.71875 10 L 21 10 L 21 6 Z M 1 10 L 1 12 L 10 12 L 10 10 Z M 21 12 L 28.28125 12 L 30 17.125 L 30 23 L 28.84375 23 C 28.398438 21.28125 26.851563 20 25 20 C 23.148438 20 21.601563 21.28125 21.15625 23 L 21 23 Z M 2 14 L 2 16 L 8 16 L 8 14 Z M 9 22 C 10.117188 22 11 22.882813 11 24 C 11 25.117188 10.117188 26 9 26 C 7.882813 26 7 25.117188 7 24 C 7 22.882813 7.882813 22 9 22 Z M 25 22 C 26.117188 22 27 22.882813 27 24 C 27 25.117188 26.117188 26 25 26 C 23.882813 26 23 25.117188 23 24 C 23 22.882813 23.882813 22 25 22 Z"
+                fill="#fff"></path>
+            </svg>
+          </div>
+        </div>
+        <h5 class="text-center text-lg sm:text-base font-medium text-gray-900 group-hover:text-green-600">
+          Logistics and Transportation
+        </h5>
+      </button>
+      <button
+        onclick="showToast('purple', 'Construction', 'Simplify payroll for project-based workforces with automated wage calculations and compliance tracking.')"
+        class="flex flex-col items-center justify-center p-4 bg-white  border-2 border-gray-200 hover:border-[#DB3D5B] rounded-2xl group transition-colors   duration-300">
+        <div class="mb-2 w-20 aspect-square flex items-center justify-center">
+          <div class="mb-2 flex justify-cente items-center h-12 w-12 rounded-md bg-[#DB3D5B] text-white">
+            <svg fill="#000000" width="80px" height="80px" viewBox="0 0 512 512" enable-background="new 0 0 512 512"
+              class="p-2" id="Layer_1" version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink">
+              <g fill="#fff">
+                <path
+                  d="M97.73,377.029H73.514c-5.014,0-9.081,4.068-9.081,9.081s4.068,9.081,9.081,9.081H97.73c5.014,0,9.081-4.068,9.081-9.081   S102.744,377.029,97.73,377.029z"
+                  fill="#fff"></path>
+                <path
+                  d="M97.73,425.461H73.514c-5.014,0-9.081,4.068-9.081,9.081s4.068,9.081,9.081,9.081H97.73c5.014,0,9.081-4.068,9.081-9.081   S102.744,425.461,97.73,425.461z"
+                  fill="#fff"></path>
+                <path
+                  d="M170.379,377.029h-12.108c-5.014,0-9.081,4.068-9.081,9.081s4.068,9.081,9.081,9.081h12.108   c5.014,0,9.081-4.068,9.081-9.081S175.393,377.029,170.379,377.029z"
+                  fill="#fff"></path>
+                <path
+                  d="M170.379,425.461h-12.108c-5.014,0-9.081,4.068-9.081,9.081s4.068,9.081,9.081,9.081h12.108   c5.014,0,9.081-4.068,9.081-9.081S175.393,425.461,170.379,425.461z"
+                  fill="#fff"></path>
+                <path
+                  d="M97.73,328.596H73.514c-5.014,0-9.081,4.068-9.081,9.081s4.068,9.081,9.081,9.081H97.73c5.014,0,9.081-4.068,9.081-9.081   S102.744,328.596,97.73,328.596z"
+                  fill="#fff"></path>
+                <path
+                  d="M230.92,292.271c-5.014,0-9.081,4.068-9.081,9.081v17.559h-66.595v-78.1c0-5.014-4.068-9.081-9.081-9.081   c-5.014,0-9.081,4.068-9.081,9.081v27.243H34.162v-51.46c0-5.014-4.068-9.081-9.081-9.081S16,211.582,16,216.595v260.326   c0,8.348,6.787,15.135,15.135,15.135h193.731c8.348,0,15.135-6.787,15.135-15.135V301.353   C240.002,296.339,235.934,292.271,230.92,292.271z M221.839,473.894H34.162V286.217h102.92v50.857h84.757V473.894z"
+                  fill="#fff"></path>
+                <path
+                  d="M485.193,16.349H107.621c-3.843,0-7.426,2.069-9.383,5.439L65.627,78.853c-1.91,3.334-1.904,7.473,0.024,10.808   c1.927,3.323,5.51,5.392,9.353,5.392h113.857c-0.266,0.851-0.532,35.591-0.532,35.591h-85.083c-8.047,0-14.597,6.551-14.597,14.603   v33.865c0,8.052,6.551,14.603,14.597,14.603h182.699c8.047,0,14.597-6.551,14.597-14.603v-33.865   c0-8.052-6.551-14.603-14.597-14.603h-79.454c0,0-0.272-34.74-0.532-35.591h160.936v400.599h18.162v-67.174l42.379,42.379v24.796   h18.162V95.052h39.594c5.96,0,10.807-4.848,10.807-10.819V27.156C496,21.197,491.152,16.349,485.193,16.349z M282.38,175.553   H106.811v-26.747H282.38V175.553z M385.057,153.76l34.527,34.527l-34.527,34.527V153.76z M385.057,243.697l34.527,34.527   l-34.527,34.527V243.697z M400.305,233.256l27.131-27.131v54.262L400.305,233.256z M427.436,170.45l-27.131-27.131l27.131-27.131   V170.45z M373.919,76.89l34.303-34.303l34.297,34.303H373.919z M213.621,46.915l29.975,29.975h-59.944L213.621,46.915z    M166.058,68.802l-34.291-34.291h68.576L166.058,68.802z M226.906,34.511h68.57l-34.285,34.291L226.906,34.511z M308.76,46.915   l29.975,29.975h-59.95L308.76,46.915z M356.33,68.802l-34.291-34.291h68.576L356.33,68.802z M110.134,37.58   c0.438,1.058,38.329,39.31,38.329,39.31H87.668L110.134,37.58z M422.89,95.052l-37.832,37.826V95.052H422.89z M385.057,333.627   l36.076,36.07l-36.076,37.714V333.627z M427.436,445.167l-27.273-27.273l27.273-28.509V445.167z M400.305,323.192l27.131-27.131   v54.256L400.305,323.192z M477.838,76.89h-9.755c-0.095-0.106-42.255-42.379-42.255-42.379h52.01V76.89z"
+                  fill="#fff"></path>
+              </g>
+            </svg>
+          </div>
+        </div>
+        <h5 class="text-center text-lg sm:text-base font-medium text-gray-900 group-hover:text-green-600">
+          Construction
+        </h5>
+      </button>
+      <button
+        onclick="showToast('purple', 'Government and Public Sector', 'Ensure compliance and accurate payroll for government employees and departments.')"
+        class="flex flex-col items-center justify-center p-4 bg-white  border-2 border-gray-200 hover:border-[#DB3D5B] rounded-2xl group transition-colors   duration-300">
+        <div class="mb-2 w-20 aspect-square flex items-center justify-center">
+          <div class="mb-2 flex justify-cente items-center h-14 w-14 rounded-md bg-[#DB3D5B] text-white">
+            <svg fill="#000000" width="80px" height="80px" viewBox="-2.09 0 51.25 51.25" id="Layer_2" class="p-2"
+              data-name="Layer 2" xmlns="http://www.w3.org/2000/svg">
+              <defs fill="#fff">
+                <style fill="#fff">
+                  .cls-1 {
+                    opacity: 0.12;
+                  }
+                </style>
+              </defs>
+              <rect y="48.07" width="47.08" height="3.18" fill="#fff"></rect>
+
+              <path
+                d="M48.94,28.56v-2.4H43.49A16.14,16.14,0,0,0,29,14V8.54c3-.65,6.06,3,9.08.68V2.64C35,4.92,32,1.3,28.94,2a1.17,1.17,0,0,0-1.12-1,1.19,1.19,0,0,0-1.14,1.23v0h0V14A16.16,16.16,0,0,0,12.15,26.16H6.71v2.4H4.28V47.91H51.36V28.56ZM13.41,44.29a1.54,1.54,0,0,1-1.55,1.55h0a1.54,1.54,0,0,1-1.55-1.55V32.52A1.54,1.54,0,0,1,11.86,31h0a1.54,1.54,0,0,1,1.55,1.55Zm8,0a1.54,1.54,0,0,1-1.55,1.55h0a1.54,1.54,0,0,1-1.55-1.55V32.52A1.54,1.54,0,0,1,19.85,31h0a1.54,1.54,0,0,1,1.55,1.55Zm8,0a1.54,1.54,0,0,1-1.55,1.55h0a1.54,1.54,0,0,1-1.55-1.55V32.52A1.54,1.54,0,0,1,27.84,31h0a1.54,1.54,0,0,1,1.55,1.55Zm8,0a1.54,1.54,0,0,1-1.55,1.55h0a1.55,1.55,0,0,1-1.55-1.55V32.52A1.55,1.55,0,0,1,35.83,31h0a1.54,1.54,0,0,1,1.55,1.55Zm8,0a1.54,1.54,0,0,1-1.55,1.55h0a1.55,1.55,0,0,1-1.55-1.55V32.52A1.55,1.55,0,0,1,43.82,31h0a1.54,1.54,0,0,1,1.55,1.55Z"
+                transform="translate(-4.28 -1)" fill="#fff"></path>
+
+              <g class="cls-1" fill="#fff">
+
+                <rect x="23.52" y="48.07" width="23.56" height="3.18" fill="#fff"></rect>
+
+                <path
+                  d="M27.84,31a1.54,1.54,0,0,1,1.55,1.55V44.29a1.54,1.54,0,0,1-1.55,1.55h0v2.07H51.36V28.56H48.94v-2.4H43.49A16.14,16.14,0,0,0,29,14V8.54c3-.65,6.06,3,9.08.68V2.64C35,4.92,32,1.3,28.94,2a1.17,1.17,0,0,0-1.12-1h0V31Zm14.43,1.55a1.55,1.55,0,1,1,3.1,0V44.29a1.55,1.55,0,0,1-3.1,0Zm-8,0a1.55,1.55,0,0,1,3.1,0V44.29a1.55,1.55,0,0,1-3.1,0Z"
+                  transform="translate(-4.28 -1)" fill="#fff"></path>
+
+              </g>
+
+              <path d="M8.54,49.12" transform="translate(-4.28 -1)" fill="#fff"></path>
+
+            </svg>
+          </div>
+        </div>
+        <h5 class="text-center text-lg sm:text-base font-medium text-gray-900 group-hover:text-green-600">
+          Government and Public Sector
+        </h5>
+      </button>
+      <button
+        onclick="showToast('purple', 'Financial Services', 'Handle complex payroll scenarios for finance professionals with precision and security.')"
+        class="flex flex-col items-center justify-center p-4 bg-white  border-2 border-gray-200 hover:border-[#DB3D5B] rounded-2xl group transition-colors   duration-300">
+        <div class="mb-2 w-20 aspect-square flex items-center justify-center">
+          <div class="mb-2 flex justify-cente items-center h-14 w-14 rounded-md bg-[#DB3D5B] text-white">
+            <svg fill="#000000" width="80px" height="80px" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"
+              class="p-2">
+
+              <g data-name="18. Bill" id="_18._Bill" fill="#fff">
+
+                <path
+                  d="M16,7h2a1,1,0,0,0,0-2H17a1,1,0,0,0-2,0v.18A3,3,0,0,0,16,11a1,1,0,0,1,0,2H14a1,1,0,0,0,0,2h1a1,1,0,0,0,2,0v-.18A3,3,0,0,0,16,9a1,1,0,0,1,0-2Z"
+                  fill="#fff"></path>
+
+                <path
+                  d="M31,24H28V3a3,3,0,0,0-3-3H3A3,3,0,0,0,0,3V9a1,1,0,0,0,1,1H4V29a3,3,0,0,0,3,3H29a3,3,0,0,0,3-3V25A1,1,0,0,0,31,24ZM2,3A1,1,0,0,1,4,3V8H2ZM8,25v4a1,1,0,0,1-.31.71A.93.93,0,0,1,7,30a1,1,0,0,1-1-1V3a3,3,0,0,0-.18-1H25a1,1,0,0,1,1,1V24H9A1,1,0,0,0,8,25Zm22,4a1,1,0,0,1-.31.71A.93.93,0,0,1,29,30H9.83A3,3,0,0,0,10,29V26H30Z"
+                  fill="#fff"></path>
+
+                <path d="M17,19H9a1,1,0,0,0,0,2h8a1,1,0,0,0,0-2Z" fill="#fff"></path>
+
+                <path d="M23,19H21a1,1,0,0,0,0,2h2a1,1,0,0,0,0-2Z" fill="#fff"></path>
+
+              </g>
+
+            </svg>
+          </div>
+        </div>
+        <h5 class="text-center text-lg sm:text-base font-medium text-gray-900 group-hover:text-green-600">
+          Financial Services
+        </h5>
+      </button>
+      <button
+        onclick="showToast('purple', 'Agriculture', 'Support agribusiness with tools that simplify seasonal and part-time payroll.')"
+        class="flex flex-col items-center justify-center p-4 bg-white  border-2 border-gray-200 hover:border-[#DB3D5B] rounded-2xl group transition-colors   duration-300">
+
+
+
+
+        <div class="mb-2 w-20 aspect-square flex items-center justify-center">
+          <div class="mb-2 flex justify-cente items-center h-14 w-14 rounded-md bg-[#DB3D5B] text-white">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+              stroke="currentColor" class="p-2">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="m6.115 5.19.319 1.913A6 6 0 0 0 8.11 10.36L9.75 12l-.387.775c-.217.433-.132.956.21 1.298l1.348 1.348c.21.21.329.497.329.795v1.089c0 .426.24.815.622 1.006l.153.076c.433.217.956.132 1.298-.21l.723-.723a8.7 8.7 0 0 0 2.288-4.042 1.087 1.087 0 0 0-.358-1.099l-1.33-1.108c-.251-.21-.582-.299-.905-.245l-1.17.195a1.125 1.125 0 0 1-.98-.314l-.295-.295a1.125 1.125 0 0 1 0-1.591l.13-.132a1.125 1.125 0 0 1 1.3-.21l.603.302a.809.809 0 0 0 1.086-1.086L14.25 7.5l1.256-.837a4.5 4.5 0 0 0 1.528-1.732l.146-.292M6.115 5.19A9 9 0 1 0 17.18 4.64M6.115 5.19A8.965 8.965 0 0 1 12 3c1.929 0 3.716.607 5.18 1.64" />
+            </svg>
+          </div>
+        </div>
+        <h5 class="text-center text-lg sm:text-base font-medium text-gray-900 group-hover:text-green-600">
+          Agriculture
+        </h5>
+      </button>
+  </section>
+
+
+  <!-- in4-popup-message -->
+  <script>
+    function showToast(type, title, message) {
+      const container = document.querySelector('.toast-container');
+      if (!container) {
+        console.error('Toast container not found');
+        return;
+      }
+
+      const toast = document.createElement('div');
+
+      // Set purple background for all toasts
+      const colors = {
+        purple: 'bg-[#DB3D5B]',
+      };
+
+      toast.className = `toast ${colors[type] || 'bg-gray-500'} text-white p-4 rounded-lg shadow-lg flex items-center justify-between space-x-4 relative overflow-hidden`;
+
+      toast.innerHTML = `
+                      <div class="flex-1">
+                        <h3 class="font-bold">${title}</h3>
+                        <p class="text-sm opacity-90">${message}</p>
+                      </div>
+                      <button class="cancel-button text-white text-lg font-bold">&times;</button>
+                      <div class="progress-bar"></div>
+                    `;
+
+      container.appendChild(toast);
+
+      // Cancel button functionality
+      const cancelButton = toast.querySelector('.cancel-button');
+      cancelButton.addEventListener('click', () => {
+        toast.classList.add('hide');
+        setTimeout(() => toast.remove(), 500);
+      });
+
+      // Automatically remove the toast after 10 seconds
+      setTimeout(() => {
+        toast.classList.add('hide');
+        setTimeout(() => toast.remove(), 500);
+      }, 10000);
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const hamburger = document.getElementById('hamburger');
+      const mobileMenu = document.getElementById('mobile-menu');
+
+      // Check if hamburger or mobile menu exists
+      if (!hamburger || !mobileMenu) {
+        console.error('Hamburger or mobile menu not found');
+        return;
+      }
+
+      const productButton = document.querySelector('#mobile-menu button');
+      if (!productButton) {
+        console.error('Product button not found');
+        return;
+      }
+
+      const productDropdown = productButton.nextElementSibling;
+      if (!productDropdown) {
+        console.error('Product dropdown not found');
+        return;
+      }
+
+      // Toggle mobile menu on hamburger click
+      hamburger.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+
+      // Toggle product dropdown on button click
+      productButton.addEventListener('click', () => {
+        productDropdown.classList.toggle('hidden');
+      });
+    });
+  </script>
+   <!-- Section 9 -->
+  <section class="h-auto bg-gray-50">
+    <div
+      class="flex flex-col lg:flex-row items-center justify-center lg:justify-between px-6 lg:px-20 space-y-6 lg:space-y-0">
+      <!-- Left side: Headline, Paragraph, and Button -->
+      <div class="lg:w-3/6 text-center lg:text-left lg:pr-10">
+        <h1 class="text-3xl lg:text-5xl font-inter font-bold text-black mb-4">
+          Manage All HR Operations on the Go with Our Mobile App
+        </h1>
+        <ul class="text-md text-gray-900 font-inter mt-3 mb-6 space-y-4 list-disc list-inside">
+          <li>
+            <strong>Organize Employee Record<br></strong>
+          </li>
+          <li>
+            <strong>Simplify Attendance Tracking <br></strong>
+          </li>
+          <li>
+            <strong>Efficient Payroll Management <br></strong>
+          </li>
+          <li>
+            <strong>Real-Time Notifications <br></strong>
+          </li>
+        </ul>
+        <div
+          class="flex flex-col sm:flex-row sm:space-x-4  md:10 space-y-4 sm:space-y-0 justify-center sm:justify-start items-center sm:items-start">
+          <!-- Gradient Button for Google Play with Logo -->
+          <button type="button" class="flex items-center justify-center w-48 text-white bg-black rounded-lg h-14">
+            <div class="mr-3">
+              <svg viewBox="30 336.7 120.9 129.2" width="30">
+                <path fill="#FFD400"
+                  d="M119.2,421.2c15.3-8.4,27-14.8,28-15.3c3.2-1.7,6.5-6.2,0-9.7  c-2.1-1.1-13.4-7.3-28-15.3l-20.1,20.2L119.2,421.2z">
+                </path>
+                <path fill="#FF3333"
+                  d="M99.1,401.1l-64.2,64.7c1.5,0.2,3.2-0.2,5.2-1.3  c4.2-2.3,48.8-26.7,79.1-43.3L99.1,401.1L99.1,401.1z">
+                </path>
+                <path fill="#48FF48"
+                  d="M99.1,401.1l20.1-20.2c0,0-74.6-40.7-79.1-43.1  c-1.7-1-3.6-1.3-5.3-1L99.1,401.1z">
+                </path>
+                <path fill="#3BCCFF"
+                  d="M99.1,401.1l-64.3-64.3c-2.6,0.6-4.8,2.9-4.8,7.6  c0,7.5,0,107.5,0,113.8c0,4.3,1.7,7.4,4.9,7.7L99.1,401.1z">
+                </path>
+              </svg>
+            </div>
+            <div>
+              <div class="text-xs">
+                GET IT ON
+              </div>
+              <div class="-mt-1 font-inter text-xl font-semibold">
+                Google Play
+              </div>
+            </div>
+          </button>
+          <!-- Gradient Button for App Store -->
+          <button type="button" class="flex items-center justify-center w-48 text-white bg-black h-14 rounded-xl">
+            <div class="mr-3">
+              <svg viewBox="0 0 384 512" width="30">
+                <path fill="currentColor"
+                  d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z">
+                </path>
+              </svg>
+            </div>
+            <div>
+              <div class="text-xs">
+                Download on the
+              </div>
+              <div class="-mt-1 font-inter text-xl font-semibold">
+                App Store
+              </div>
+            </div>
+          </button>
+        </div>
+      </div>
+      <!-- Right side: Image -->
+      <div class="lg:w-3/5 flex justify-center lg:justify-center">
+        <img src="src/images/Mobile.png" alt="Mobile CRM App" class="w-full max-w-md lg:max-w-2xl h-auto rounded-lg">
+      </div>
+    </div>
+  </section>
+   <!-- Section 10 -->
+  <section>
+    <div class="max-w-7xl max-lg:max-w-3xl mx-auto bg-white my-6 font-inter">
+
+
+      <div class="grid lg:grid-cols-3 items-start gap-4 p-2 shadow-md rounded-lg mt-12">
+        <div class="bg-[#DC3D5B] rounded-lg p-6 h-full max-lg:order-1">
+          <h2 class="text-xl text-white lg:mt-20">Get in touch with us today and let’s create the perfect solution
+            tailored to your needs, driving your business forward with innovative strategies and exceptional results!
+          </h2>
+        </div>
+
+        <div class="p-4 lg:col-span-2">
+          <form>
+            <div class="grid sm:grid-cols-2 gap-8">
+              <!-- Full Name -->
+              <div class="relative flex items-center">
+                <input type="text" placeholder="Full Name"
+                  class="px-2 py-3 bg-white w-full text-sm text-gray-800 border-b border-gray-300 focus:border-red-500 outline-none" />
+              </div>
+
+              <!-- Email Address -->
+              <div class="relative flex items-center">
+                <input type="text" placeholder="Email Address"
+                  class="px-2 py-3 bg-white w-full text-sm text-gray-800 border-b border-gray-300 focus:border-red-500 outline-none" />
+              </div>
+
+              <!-- Phone No -->
+              <div class="relative flex items-center">
+                <input type="number" placeholder="Phone No."
+                  class="px-2 py-3 bg-white  w-full text-sm text-gray-800 border-b border-gray-300 focus:border-red-500 outline-none" />
+              </div>
+
+              <!-- Company Name -->
+              <div class="relative flex items-center">
+                <input type="email" placeholder="Company Name"
+                  class="px-2 py-3 bg-white  w-full text-sm text-gray-800 border-b border-gray-300 focus:border-red-500 outline-none" />
+              </div>
+              <!-- Company Size Input with Datalist -->
+              <div class="relative flex items-center w-full sm:w-full mb-4">
+                <input list="company_sizes" name="company_size" placeholder="Company Size"
+                  class="px-2 py-3 bg-white w-full text-sm text-gray-800 border-b border-gray-300 focus:border-red-500 outline-none">
+                <datalist id="company_sizes">
+                  <option value="Up to 25">
+                  <option value="26 to 50">
+                  <option value="51 to 100">
+                  <option value="101 to 250">
+                  <option value="251 to 500">
+                  <option value="501 to 1,000">
+                  <option value="5,001 to 10,000">
+                  <option value="More than 10,000">
+                </datalist>
+              </div>
+
+              <!-- Business Need Input with Datalist -->
+              <div class="relative flex items-center w-full sm:w-full mb-4">
+                <input list="business_needs" name="business_need" placeholder="Business Needs"
+                  class="px-2 py-3 bg-white w-full text-sm text-gray-800 border-b border-gray-300 focus:border-red-500 outline-none">
+                <datalist id="business_needs">
+                  <option value="Sales Management">
+                  <option value="Lead Management">
+                  <option value="Support Ticket Management">
+                  <option value="Vendor Management">
+                  <option value="Inventory & Warehouse Management">
+                  <option value="Project Management">
+                  <option value="Task Management">
+                  <option value="Canteen Management">
+                  <option value="Visitor Management">
+                  <option value="Parking Management">
+                  <option value="Students Management (for Schools & Colleges)">
+                  <option value="Warranty, Claim and Contract Management">
+                </datalist>
+              </div>
+
+              <!-- Message -->
+              <div class="relative flex items-center sm:col-span-2">
+                <textarea placeholder="Write Message"
+                  class="px-2 pt-3 bg-white text-black w-full text-sm border-b border-gray-300 focus:border-blue-500 outline-none"></textarea>
+              </div>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="lg:ml-72 mt-12">
+              <button type="button"
+                class="flex items-center justify-start text-sm rounded-lg px-4 py-3 tracking-wide text-white bg-[#DB3D5B] hover:bg-[#661726]">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" fill='#fff' class="mr-2"
+                  viewBox="0 0 548.244 548.244">
+                  <path fill-rule="evenodd"
+                    d="M392.19 156.054 211.268 281.667 22.032 218.58C8.823 214.168-.076 201.775 0 187.852c.077-13.923 9.078-26.24 22.338-30.498L506.15 1.549c11.5-3.697 24.123-.663 32.666 7.88 8.542 8.543 11.577 21.165 7.879 32.666L390.89 525.906c-4.258 13.26-16.575 22.261-30.498 22.338-13.923.076-26.316-8.823-30.728-22.032l-63.393-190.153z"
+                    clip-rule="evenodd" data-original="#000000" />
+                </svg>
+                Send Message
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+ <!-- Section 11 -->
+  <section class="py-16 p-10 h-5/6 bg-gray-300">
+    <div class="container mx-auto text-center">
+      <h2 class="text-3xl font-medium text-gray-800 mb-12">Why choose us</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Card 1 -->
+        <div class="rounded-xl bg-white p-6 text-center shadow-xl">
+          <div
+            class="mx-auto flex h-16 w-16 -translate-y-12 transform items-center justify-center rounded-full bg-red-500 shadow-lg shadow-red-500/40">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white">
+              <path
+                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"
+                fill="currentColor"></path>
+            </svg>
+          </div>
+          <h1 class="text-darken mb-3 text-xl font-medium lg:px-14">Customizable</h1>
+          <p class="px-4 text-gray-900">Tailor your landing page's look and feel, from the color scheme to the font
+            size, to the design of the page.</p>
+        </div>
+        <!-- Card 2 -->
+        <div class="rounded-xl bg-white p-6 text-center shadow-xl">
+          <div
+            class="mx-auto flex h-16 w-16 -translate-y-12 transform items-center justify-center rounded-full bg-red-500 shadow-lg shadow-red-500/40">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white">
+              <path
+                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"
+                fill="currentColor"></path>
+            </svg>
+          </div>
+          <h1 class="text-darken mb-3 text-xl font-medium lg:px-14">Fast Performance</h1>
+          <p class="px-4 text-gray-900">We build our templates for speed in mind, for super-fast load times so your
+            customers never waver.</p>
+        </div>
+        <!-- Card 3 -->
+        <div class="rounded-xl bg-white p-6 text-center shadow-xl">
+          <div
+            class="mx-auto flex h-16 w-16 -translate-y-12 transform items-center justify-center rounded-full bg-red-500 shadow-lg shadow-red-500/40">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white">
+              <path
+                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"
+                fill="currentColor"></path>
+            </svg>
+          </div>
+          <h1 class="text-darken mb-3 text-xl font-medium lg:px-14">Fully Featured</h1>
+          <p class="px-4 text-gray-900">Everything you need to succeed and launch your landing page, right out of the
+            box. No need to install anything else.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+ <!-- Footer -->
+  <footer class="bg-gray-900  h-auto p-10 font-inter  mt-20 tracking-wide">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div class="lg:flex lg:items-center">
+        <a href="">
+          <img src="src/images/Pro-Biz (white).png" alt="logo" class="w-52" />
+        </a>
+      </div>
+
+      <div class="flex justify-center mr-20 h-auto items-center gap-4">
+        <div class="social-button">
+          <button class="relative w-12 h-12 rounded-full group">
+            <div
+              class="floater w-full h-full absolute top-0 left-0 bg-pink-700 rounded-full duration-300 group-hover:-top-8 group-hover:shadow-2xl">
+            </div>
+            <div
+              class="icon relative z-10 w-full h-full flex items-center justify-center border-2 border-violet-400 rounded-full">
+              <svg fill="none" viewBox="0 0 22 22" height="22" width="22" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M21.94 6.46809C21.8884 5.2991 21.6994 4.49551 21.4285 3.79911C21.1492 3.05994 20.7194 2.39818 20.1564 1.84802C19.6062 1.28932 18.9401 0.855163 18.2094 0.580194C17.5091 0.309437 16.7096 0.120336 15.5407 0.0688497C14.363 0.0128932 13.9891 0 11.0022 0C8.01527 0 7.64141 0.0128932 6.46808 0.064466C5.29914 0.116039 4.49551 0.305225 3.79932 0.57581C3.05994 0.855163 2.39818 1.28494 1.84802 1.84802C1.28932 2.39813 0.855377 3.06428 0.580193 3.7949C0.309437 4.49551 0.120379 5.2948 0.0688496 6.4637C0.0129362 7.64141 0 8.01527 0 11.0022C0 13.9891 0.0129362 14.363 0.0644659 15.5363C0.116039 16.7053 0.305225 17.5089 0.576025 18.2053C0.855377 18.9444 1.28932 19.6062 1.84802 20.1564C2.39818 20.7151 3.06432 21.1492 3.79494 21.4242C4.49547 21.6949 5.29476 21.884 6.46391 21.9355C7.63702 21.9873 8.0111 22 10.998 22C13.9849 22 14.3588 21.9873 15.5321 21.9355C16.7011 21.884 17.5047 21.695 18.2009 21.4242C18.9321 21.1415 19.5961 20.7091 20.1505 20.1548C20.7048 19.6005 21.1373 18.9365 21.42 18.2053C21.6906 17.5047 21.8798 16.7052 21.9314 15.5363C21.9829 14.363 21.9958 13.9891 21.9958 11.0022C21.9958 8.01527 21.9914 7.64137 21.94 6.46809ZM19.9588 15.4503C19.9114 16.5248 19.731 17.105 19.5805 17.4918C19.2109 18.4502 18.4502 19.2109 17.4918 19.5805C17.105 19.731 16.5206 19.9114 15.4503 19.9586C14.29 20.0103 13.942 20.023 11.0066 20.023C8.07118 20.023 7.71881 20.0103 6.56259 19.9586C5.48816 19.9114 4.90796 19.731 4.52117 19.5805C4.04425 19.4043 3.61014 19.1249 3.25772 18.7596C2.89242 18.4029 2.61306 17.9731 2.43677 17.4961C2.28635 17.1094 2.10589 16.5248 2.05874 15.4547C2.007 14.2943 1.99428 13.9461 1.99428 11.0107C1.99428 8.07535 2.007 7.72298 2.05874 6.56698C2.10589 5.49254 2.28635 4.91235 2.43677 4.52555C2.61306 4.04842 2.89241 3.61439 3.26211 3.26189C3.61865 2.89658 4.04842 2.61723 4.52555 2.44115C4.91235 2.29073 5.49692 2.11023 6.56697 2.06291C7.72736 2.01134 8.07556 1.99844 11.0107 1.99844C13.9505 1.99844 14.2985 2.01134 15.4547 2.06291C16.5292 2.11027 17.1093 2.29069 17.4961 2.44111C17.9731 2.61723 18.4072 2.89658 18.7596 3.26189C19.1249 3.61865 19.4042 4.04842 19.5805 4.52555C19.731 4.91235 19.9114 5.49671 19.9587 6.56698C20.0103 7.72736 20.0232 8.07535 20.0232 11.0107C20.0232 13.9461 20.0104 14.29 19.9588 15.4503Z"
+                  class="group-hover:fill-[#171543] fill-white duration-300"></path>
+                <path
+                  d="M11.0026 5.35054C7.88252 5.35054 5.35107 7.88182 5.35107 11.0021C5.35107 14.1223 7.88252 16.6536 11.0026 16.6536C14.1227 16.6536 16.6541 14.1223 16.6541 11.0021C16.6541 7.88182 14.1227 5.35054 11.0026 5.35054ZM11.0026 14.668C8.97844 14.668 7.33654 13.0264 7.33654 11.0021C7.33654 8.97774 8.97844 7.33609 11.0025 7.33609C13.0269 7.33609 14.6685 8.97774 14.6685 11.0021C14.6685 13.0264 13.0268 14.668 11.0026 14.668ZM18.1971 5.12706C18.1971 5.85569 17.6063 6.44646 16.8775 6.44646C16.1489 6.44646 15.5581 5.85569 15.5581 5.12706C15.5581 4.39833 16.1489 3.80774 16.8775 3.80774C17.6063 3.80774 18.1971 4.39829 18.1971 5.12706Z"
+                  class="group-hover:fill-[#12c112e1] fill-white duration-300"></path>
+              </svg>
+            </div>
+          </button>
+        </div>
+        <div class="social-button">
+          <button class="relative w-12 h-12 rounded-full group">
+            <div
+              class="floater w-full h-full absolute top-0 left-0 bg-black rounded-full duration-300 group-hover:-top-8 group-hover:shadow-2xl">
+            </div>
+            <div
+              class="icon relative z-10 w-full h-full flex items-center justify-center border-2 border-black rounded-full">
+              <svg fill="none" viewBox="0 0 22 22" height="22" width="22" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M12.8115 9.3155L20.8253 0H18.9263L11.9679 8.08852L6.41015 0H0L8.40433 12.2313L0 22H1.89914L9.24745 13.4583L15.1168 22H21.5269L12.811 9.3155H12.8115ZM10.2103 12.339L9.35878 11.1211L2.58343 1.42964H5.5004L10.9682 9.25094L11.8197 10.4689L18.9272 20.6354H16.0102L10.2103 12.3395V12.339Z"
+                  class="group-hover:fill-[#12c112e1] fill-white duration-300"></path>
+              </svg>
+            </div>
+          </button>
+        </div>
+        <div class="social-button">
+          <button class="relative w-12 h-12 rounded-full group">
+            <div
+              class="floater w-full h-full absolute top-0 left-0 bg-blue-500 rounded-full duration-300 group-hover:-top-8 group-hover:shadow-2xl">
+            </div>
+            <div
+              class="icon relative z-10 w-full h-full flex items-center justify-center border-2 border-blue-500 rounded-full">
+              <svg fill="none" viewBox="0 0 13 22" height="22" width="13" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M7.71289 22H4.1898C3.60134 22 3.12262 21.5213 3.12262 20.9328V12.9863H1.06717C0.478672 12.9863 0 12.5074 0 11.9191V8.514C0 7.9255 0.478672 7.44683 1.06717 7.44683H3.12262V5.74166C3.12262 4.05092 3.6535 2.6125 4.65773 1.58207C5.6665 0.546992 7.07627 0 8.7346 0L11.4214 0.00438281C12.0089 0.00537109 12.4868 0.484086 12.4868 1.07151V4.23311C12.4868 4.82157 12.0083 5.30028 11.4199 5.30028L9.61091 5.30093C9.05919 5.30093 8.91868 5.41153 8.88864 5.44543C8.83914 5.50172 8.78023 5.66062 8.78023 6.09954V7.4467H11.284C11.4725 7.4467 11.6551 7.49319 11.812 7.58076C12.1506 7.76995 12.3611 8.12762 12.3611 8.51417L12.3597 11.9193C12.3597 12.5074 11.881 12.9861 11.2926 12.9861H8.78019V20.9328C8.78023 21.5213 8.30139 22 7.71289 22ZM4.41233 20.7103H7.49031V12.4089C7.49031 12.016 7.81009 11.6964 8.20282 11.6964H11.07L11.0712 8.73662H8.20265C7.80991 8.73662 7.49031 8.41706 7.49031 8.02411V6.09959C7.49031 5.59573 7.54153 5.0227 7.92185 4.59198C8.38144 4.07133 9.10568 4.01126 9.61056 4.01126L11.1971 4.01057V1.29375L8.73357 1.28975C6.06848 1.28975 4.41238 2.99574 4.41238 5.7417V8.02407C4.41238 8.4168 4.09277 8.73658 3.7 8.73658H1.28975V11.6964H3.7C4.09277 11.6964 4.41238 12.016 4.41238 12.4089L4.41233 20.7103Z"
+                  class="group-hover:fill-[#12c112e1] fill-white duration-300"></path>
+              </svg>
+            </div>
+          </button>
+        </div>
+        <div class="social-button">
+          <button class="relative w-12 h-12 rounded-full group">
+            <div
+              class="floater w-full h-full absolute top-0 left-0 bg-red-600 rounded-full duration-300 group-hover:-top-8 group-hover:shadow-2xl">
+            </div>
+            <div
+              class="icon relative z-10 w-full h-full flex items-center justify-center border-2 border-red-400 rounded-full">
+              <svg fill="none" viewBox="0 0 30 22" height="22" width="30" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M18.9945 9.70081L12.5775 6.18974C12.2085 5.98783 11.7724 5.99538 11.4108 6.20965C11.0489 6.42415 10.833 6.80311 10.833 7.22372V14.1857C10.833 14.6043 11.0476 14.9826 11.407 15.1973C11.5947 15.3094 11.8028 15.3657 12.0113 15.3657C12.2064 15.3654 12.3984 15.3166 12.57 15.2237L18.9872 11.7731C19.1742 11.6726 19.3305 11.5235 19.4397 11.3415C19.5489 11.1596 19.6069 10.9515 19.6077 10.7393C19.6086 10.527 19.552 10.3184 19.4441 10.1356C19.3362 9.95283 19.1808 9.80259 18.9945 9.70081ZM12.5352 13.3099V8.10662L17.3312 10.7308L12.5352 13.3099Z"
+                  class="group-hover:fill-[#12c112e1] fill-white duration-300"></path>
+                <path
+                  d="M28.8325 5.19239L28.8312 5.17912C28.8065 4.94533 28.5617 2.86581 27.5508 1.80806C26.3822 0.56396 25.0574 0.412829 24.4203 0.340384C24.3722 0.335071 24.3241 0.329304 24.276 0.323081L24.2253 0.317805C20.3854 0.0385769 14.5862 0.000453846 14.5282 0.000226923L14.5231 0L14.518 0.000226923C14.4599 0.000453846 8.66074 0.0385769 4.7862 0.317805L4.73503 0.323081C4.69379 0.328641 4.64834 0.333747 4.59893 0.339533C3.96916 0.412149 2.65857 0.563563 1.48674 1.8526C0.523851 2.89905 0.245531 4.93404 0.216938 5.16272L0.213648 5.19239C0.204968 5.28969 0 7.60572 0 9.93077V12.1042C0 14.4293 0.204968 16.7453 0.213648 16.8428L0.21518 16.8574C0.239801 17.0875 0.484424 19.1289 1.49071 20.1871C2.58947 21.3895 3.97869 21.5486 4.72595 21.6341C4.84407 21.6476 4.94578 21.6592 5.01511 21.6714L5.08228 21.6807C7.29943 21.8916 14.2509 21.9955 14.5456 21.9998L14.5545 22L14.5634 21.9998C14.6214 21.9995 20.4204 21.9614 24.2604 21.6822L24.3111 21.6769C24.3597 21.6705 24.4142 21.6647 24.474 21.6585C25.1003 21.592 26.4037 21.454 27.5594 20.1823C28.5223 19.1358 28.8008 17.1007 28.8292 16.8723L28.8325 16.8426C28.8412 16.7451 29.0464 14.4293 29.0464 12.1042V9.93077C29.0461 7.60566 28.8412 5.28991 28.8325 5.19239ZM27.344 12.1042C27.344 14.2563 27.1561 16.4725 27.1383 16.6759C27.0661 17.2364 26.7724 18.5239 26.3033 19.0338C25.58 19.8296 24.837 19.9085 24.2945 19.9659C24.234 19.9721 24.1736 19.9789 24.1132 19.9863C20.3991 20.2549 14.8189 20.296 14.5619 20.2976C14.2736 20.2934 7.42372 20.1886 5.2742 19.989C5.16403 19.971 5.04501 19.9572 4.91963 19.9431C4.2834 19.8702 3.41247 19.7704 2.74282 19.0338L2.72705 19.017C2.26611 18.5368 1.98092 17.3328 1.90842 16.6826C1.89492 16.5288 1.70215 14.2864 1.70215 12.1042V9.93077C1.70215 7.78124 1.88964 5.56738 1.9078 5.35975C1.99403 4.69957 2.29317 3.49007 2.74282 3.00117C3.48826 2.18124 4.27432 2.09041 4.7942 2.03034C4.84384 2.02455 4.89013 2.01927 4.93291 2.01371C8.70107 1.74379 14.3214 1.70368 14.5231 1.70215C14.7247 1.70345 20.3431 1.74379 24.0778 2.01371C24.1236 2.0195 24.1737 2.02523 24.2275 2.03147C24.7623 2.0924 25.5705 2.18459 26.3122 2.9757L26.319 2.98301C26.78 3.46324 27.0652 4.68828 27.1376 5.35152C27.1505 5.4967 27.344 7.74397 27.344 9.93077V12.1042Z"
+                  class="group-hover:fill-[#12c112e1] fill-white duration-300"></path>
+              </svg>
+            </div>
+          </button>
+        </div>
+      </div>
+
+      <div>
+        <h4 class="text-lg font-semibold mb-6 text-white">Quick Links</h4>
+        <ul class="space-y-4">
+          <li>
+            <a href="javascript:void(0)" class="text-gray-300 hover:text-white text-sm">Home</a>
+          </li>
+          <li>
+            <a href="javascript:void(0)" class="text-gray-300 hover:text-white text-sm">Products</a>
+          </li>
+          <li>
+            <a href="javascript:void(0)" class="text-gray-300 hover:text-white text-sm">Careers</a>
+          </li>
+        </ul>
+      </div>
+
+
+
+      <div>
+        <h4 class="text-lg font-semibold mb-6 text-white">Information</h4>
+        <ul class="space-y-4">
+          <li>
+            <a href="javascript:void(0)" class="text-gray-300 hover:text-white text-sm">About Us</a>
+          </li>
+          <li>
+            <a href="javascript:void(0)" class="text-gray-300 hover:text-white text-sm">Terms &amp; Conditions</a>
+          </li>
+          <li>
+            <a href="javascript:void(0)" class="text-gray-300 hover:text-white text-sm">Privacy Policy</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+
+  </footer>
+
+  <!-- Mobile menu  -->
+  <script>
+    document.getElementById('toggleOpen').addEventListener('click', function () {
+      document.getElementById('collapseMenu').classList.toggle('max-lg:hidden');
+    });
+
+    document.getElementById('toggleClose').addEventListener('click', function () {
+      document.getElementById('collapseMenu').classList.add('max-lg:hidden');
+    });
+  </script>
+
+</body>
+
+</html>
