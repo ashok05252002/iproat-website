@@ -84,34 +84,33 @@
       </ul>
     </nav>
   </header>
+ 
+
 
   <main class="">
     <!-- Hero Section -->
     <section class="relative w-full bg-cover" style="background-image: url('src/in4images/bg_2149024482.png');">
       <div class="absolute inset-0 bg-white bg-opacity-80"></div>
-
+    
       <!-- Content Wrapper -->
       <div class="relative max-w-screen-xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-8 py-12">
-
+    
         <!-- Left Side: Hero Text -->
-        <div class="lg:w-1/2 flex flex-col items-center lg:items-start text-center lg:text-left space-y-5 
-          opacity-0 animate-fade-in delay-[1500ms]">
-
+        <div class="lg:w-1/2 w-full flex flex-col items-center lg:items-start text-center lg:text-left lg:space-y-10 opacity-0 animate-fade-in delay-[1500ms] flex-grow">
           <!-- Logo -->
           <img src="src/in4images/in4 cloud hr.png" alt="Your Company Logo" class="h-10 mx-auto lg:mx-0" />
-
-          <h1 class="lg:text-5xl font- text-[#6E56A0] leading-tight">
+    
+          <h1 class="lg:text-5xl text-3xl  text-[#6E56A0] leading-tight">
             Unlock the Full Potential of Your Workforce with a
             <span class="text-[#76BC40] font-bold">Unified HRMS</span> Platform
           </h1>
           <h2 class="text-xl text-[#7030A0] bg-[#f8ecd5] px-6 py-1 rounded-3xl w-fit font-semibold">
             Ready to Digitalize your HRMS? Join Us Today!
           </h2>
-          <p class="text-base text-gray-600">
-            Managing Employees should empower your business. We’ve designed an HRMS that takes the stress out of
-            managing workloads, leaving you more time to focus on what truly matters, growing your business.
+          <p class="text-base lg:text-lg text-gray-600">
+            Managing Employees should empower your business. We’ve designed an HRMS that takes the stress out of managing workloads, leaving you more time to focus on what truly matters, growing your business.
           </p>
-          <div class="mt-2">
+          <div class="">
             <button
               class="bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 text-white font-semibold py-2 px-6 rounded-lg shadow-lg hover:from-purple-600 hover:via-purple-700 hover:to-purple-800 transition-all duration-300"
               onclick="togglePopup(true)">
@@ -119,10 +118,10 @@
             </button>
           </div>
         </div>
-
+    
         <!-- Right Side: Image Slider -->
-        <div id="sliderContainer" class="lg:w-1/2 w-full opacity-0 animate-fade-in delay-[1500ms]">
-          <div class="relative w-full h-[300px] sm:h-[550px] rounded-lg overflow-hidden">
+        <div id="sliderContainer" class="lg:w-1/2 w-full opacity-0 animate-fade-in delay-[1500ms] lg:mt-8 flex-grow">
+          <div class="relative w-full h-[300px] sm:h-[550px] lg:h-[500px] rounded-lg overflow-hidden">
             <div class="swiper-container">
               <div class="swiper-wrapper">
                 <div class="swiper-slide">
@@ -142,9 +141,10 @@
             </div>
           </div>
         </div>
-
+    
       </div>
     </section>
+    
     <!-- swiper Slider -->
     <script>
       const swiper = new Swiper('.swiper-container', {
@@ -157,82 +157,74 @@
           el: '.swiper-pagination',
           clickable: true, // Allows clicking on dots to navigate
           renderBullet: function (index, className) {
-            return '<span class="' + className + ' w-4 h-4 bg-purple-700 rounded-full  mx-1 py-0 mb-5 px-10"></span>'; // Custom dot size
+            return '<span class="' + className + ' w-4 h-4 bg-purple-700 rounded-full mx-1 py-0 mb-5 px-10"></span>'; // Custom dot size
           },
         },
       });
-
+    
       function togglePopup(show) {
         document.getElementById('popupForm').classList.toggle('hidden', !show);
       }
     </script>
+    
+    
 
-    <!-- Popup Form with Left-Side Content -->
-    <div id="popupForm" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
-      <div class="bg-white text-gray-100 p-8 rounded-lg relative w-full max-w-4xl flex flex-col md:flex-row">
-        <!-- Left Side Content -->
-        <div
-          class="w-full md:w-1/2 p-6 bg-gradient-to-r from-purple-600 via-purple-700 to-purple-800 text-white  flex flex-col items-center justify-center">
-          <h2 class="text-3xl font-bold mb-4 text-center">Let’s Work Together to Simplify Your HR Processes.</h2>
-          <ul class="space-y-3 text-center">
-            <li class="flex items-center justify-center">
-              <span class="text-green-400 bg-white text-xl mr-2">✔</span>Complete your registration by filling the form.
-            </li>
-            <li class="flex items-center justify-center">
-              <span class="text-green-400 bg-white text-xl mr-2">✔</span>Get a call back and discuss your requirements
-            </li>
-            <li class="flex items-start justify-start">
-              <span class="text-green-400 bg-white text-xl mr-2">✔</span>Schedule your demo
-            </li>
-          </ul>
-        </div>
-
-
-        <!-- Right Side Popup Form -->
-        <div class="w-full md:w-1/2 p-6 bg-gradient-to-r from-purple-600 via-purple-700 to-purple-800">
-          <button class="absolute top-4 right-4 text-gray-900 text-xl font-bold" onclick="togglePopup(false)">×</button>
-          <form class="space-y-4">
-            <h2 class="text-xl font-bold text-center">You’re making a smart choice for your company’s growth.</h2>
-            <div class="grid grid-cols-1 gap-4 ">
-
-              <div>
-                <label for="firstName" class="block text-sm font-medium">First Name</label>
-                <input type="text" id="firstName" class="w-full px-4 py-2 text-gray-950 rounded border border-gray-300"
-                  placeholder="Enter First Name">
-              </div>
-
-              <div>
-                <label for="workEmail" class="block text-sm font-medium">Work Email</label>
-                <input type="email" id="workEmail" class="w-full px-4 py-2 text-gray-950 rounded border border-gray-300"
-                  placeholder="Enter Work Email">
-              </div>
-              <div>
-                <label for="phone" class="block text-sm font-medium">Phone Number</label>
-                <input type="text" id="phone" class="w-full px-4 py-2 text-gray-950 rounded border border-gray-300"
-                  placeholder="Enter Phone Number">
-              </div>
-              <div>
-                <label for="companyName" class="block text-sm font-medium">Company Name</label>
-                <input type="text" id="companyName" class="w-full px-4 py-2 text-gray-950 rounded border border-gray-300"
-                  placeholder="Enter Company Name">
-              </div>
-              <div>
-                <label for="employees" class="block text-sm font-medium">Number of Employees</label>
-                <input type="number" id="employees" class="w-full px-4 py-2 text-gray-950 rounded border border-gray-300"
-                  placeholder="Enter Number of Employees">
-              </div>
-              <div class="text-center">
-                <button type="submit"
-                  class="relative px-6 py-2 rounded-lg bg-[#76BC40] text-white font-bold hover:bg-green-700 transition">Get
-                  Started</button>
-              </div>
-          </form>
-        </div>
+<div id="popupForm" class="fixed inset-0 z-20 bg-black bg-opacity-50 flex justify-center items-center p-4 hidden">
+  <div class="relative bg-white p-6 shadow-lg rounded-3xl w-full max-w-3xl md:max-w-4xl border border-gray-300 flex flex-col md:flex-row">
+      
+      <!-- Left Side Content in Popup -->
+      <div class="md:w-1/2 w-full bg-cover bg-center p-6 md:p-8 rounded-t-3xl md:rounded-l-3xl md:rounded-tr-none text-white relative flex items-center justify-center"
+          style="background-image: url('src/in4images/business-person-futuristic-business-environment_23-2150970181.avif');">
+          <div class="absolute inset-0 bg-black bg-opacity-60 rounded-t-3xl md:rounded-l-3xl md:rounded-tr-none"></div>
+          <div class="relative z-10 text-center md:text-left max-w-xs">
+              <h2 class="text-xs md:text-xl font-bold">Let’s Work Together to Simplify Your HR Processes.</h2>
+              <ul class="mt-4 md:mt-6 space-y-4 md:space-y-6 text-xs md:text-md">
+                  <li><span class="text-green-400 bg-white px-1 py-1 rounded-full mr-2">✔</span>Complete your registration by filling the form.</li>
+                  <li><span class="text-green-400 bg-white px-1 py-1 rounded-full mr-2">✔</span>Get a call back and discuss your requirements.</li>
+                  <li><span class="text-green-400 bg-white px-1 py-1 rounded-full mr-2">✔</span>Schedule your demo.</li>
+              </ul>
+          </div>
       </div>
-    </div>
+
+      <!-- Right Side Form -->
+      <div class="md:w-1/2 w-full bg-purple-100 p-6 md:p-6 rounded-b-3xl md:rounded-r-3xl md:rounded-bl-none relative">
+          <!-- Close Button -->
+          <button id="closeForm" class="absolute top-0 right-3 text-gray-700 hover:text-red-500 text-2xl font-bold">✖</button>
+
+          <form class="space-y-3">
+              <h3 class="text-lg md:text-xl font-bold text-center">You’re making a smart choice for your company’s growth.</h3>
+              <input type="text" placeholder="First Name" class="p-2 border border-purple-300 rounded-md w-full focus:ring-2 focus:ring-purple-500" />
+              <input type="email" placeholder="Work Email" class="p-2 border border-purple-300 rounded-md w-full focus:ring-2 focus:ring-purple-500" />
+              <input type="tel" placeholder="Phone Number" class="p-2 border border-purple-300 rounded-md w-full focus:ring-2 focus:ring-purple-500" />
+              <input type="text" placeholder="Company Name" class="p-2 border border-purple-300 rounded-md w-full focus:ring-2 focus:ring-purple-500" />
+              <input type="number" id="employees" class="w-full px-3 py-2 text-gray-950 rounded border border-gray-300" placeholder="Enter Number of Employees">
+              <textarea placeholder="Your Message" class="p-2 border border-purple-300 rounded-md w-full focus:ring-2 focus:ring-purple-500"></textarea>
+              <button type="submit" class="w-full bg-purple-700 text-white py-2 rounded-md font-bold hover:bg-purple-900 transition">Get Started</button>
+          </form>
+      </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+      // Show form after 5 seconds
+      setTimeout(() => {
+          document.getElementById("popupForm").classList.remove("hidden");
+      }, 5000);
+
+      // Close form when button is clicked
+      document.getElementById("closeForm").addEventListener("click", () => {
+          document.getElementById("popupForm").classList.add("hidden");
+      });
+  });
+</script>
+
+
+   
 
     <!-- ... (rest of your main content) ... -->
   </main>
+  
   <section class="logo-section bg-gray-50 py-20">
     <div class="container mx-auto px-8 max-w-7xl">
       <h2 class="text-center text-4xl font-bold text-gray-800 mb-10">
@@ -501,17 +493,18 @@
               CoreHR
             </h2>
 
-            <p class="mt-4 text-lg lg:text-xl font-bold text-center lg:whitespace-nowrap">
+            <p class="mt-4 text-lg lg:text-xl font-bold lg:whitespace-nowrap first-letter:uppercase">
               Comprehensive Employee Management, document management
             </p>
             
-            <p class="mt-4 text-lg lg:text-xl text-justify">Centralizes all employee data and manages employee profiles,
-              document storage, data editing, and secure access controls. Take pro-active and data driven decision
-              through finger tips information on employee’s headcount, diversity demographics by region, age group,
-              gender etc. </p>
+            
+            <p class="mt-4 text-lg lg:text-xl  first-letter:uppercase">
+              Centralizes all employee data and manages employee profiles, document storage, data editing, and secure access controls. Take pro-active and data driven decision through finger tips information on employee’s headcount, diversity demographics by region, age group, gender etc.
+            </p>
+            
           </div>
           <div class="w-full lg:w-1/2 flex justify-end mt-6 lg:mt-0">
-            <img src="src/in4images/corehrdownload.png" alt="Slide Image" class="w-full lg:w-full lg:h-96 object-cover">
+            <img src="src/in4images/corehrdownload.png" alt="Slide Image" class="w-[300px] h-[300px] object-cover">
           </div>
         </div>
 
@@ -531,7 +524,7 @@
           </div>
           <div class="w-full lg:w-1/2 pt-20">
             <h2 class="text-3xl lg:text-2xl font-medium  bg-[#fef5c5] px-6 py-1 rounded-3xl w-fit">Attendance</h2>
-            <p class="mt-4 text-lg lg:text-xl font-bold text-center lg:whitespace-nowrap">Designed to streamline time tracking and attendance
+            <p class="mt-4 text-lg lg:text-xl font-bold  lg:whitespace-nowrap">Designed to streamline time tracking and attendance
               processes</p>
             <p class="mt-4 text-lg lg:text-xl text-justify">Create and Configure Customized Time and Attendance Policies
               Auto penalties based on late come & early go rules. Multiple Shifts Schedule Management with effortless
@@ -539,7 +532,7 @@
           </div>
           <div class="w-full lg:w-1/2 flex justify-end mt-6 lg:mt-0">
             <img src="src/in4images/Attendance management download.png" alt="Slide Image"
-              class="w-full lg:w-full lg:h-96 object-cover">
+              class="w-[300px] h-[300px] object-cover">
           </div>
         </div>
 
@@ -567,7 +560,7 @@
           </div>
           <div class="w-full lg:w-1/2 pt-20">
             <h2 class="text-3xl lg:text-2xl font-medium bg-[#f8d5ec] px-6 py-1 rounded-3xl w-fit">Leave</h2>
-            <p class="mt-4 text-lg lg:text-xl font-bold text-center">Unlimited customizable leave types, Leave
+            <p class="mt-4 text-lg lg:text-xl font-bold ">Unlimited customizable leave types, Leave
               Carry-Forward, Lapse,
               Encashment Options</p>
             <p class="mt-4 text-lg lg:text-xl text-justify">Configures various types of leave (annual leave, sick leave,
@@ -576,7 +569,7 @@
               rules or availability.</p>
           </div>
           <div class="w-full lg:w-1/2 flex justify-end mt-6 lg:mt-0">
-            <img src="src/in4images/Leavedownload.png" alt="Slide Image" class="w-[500px] h-[460px] object-coverr">
+            <img src="src/in4images/Leavedownload.png" alt="Slide Image" class="w-[300px] h-[300px] object-coverr">
 
           </div>
         </div>
@@ -604,7 +597,7 @@
           </div>
           <div class="w-full lg:w-1/2 pt-20">
             <h2 class="text-3xl lg:text-2xl font-medium bg-[#f1f2ae] px-6 py-1 rounded-3xl w-fit">Payroll</h2>
-            <p class="mt-4 text-lg lg:text-xl font-bold text-center lg:whitespace-nowrap">Processes salaries based on attendance, leaves, and
+            <p class="mt-4 text-lg lg:text-xl font-bold  lg:whitespace-nowrap">Processes salaries based on attendance, leaves, and
               deductions</p>
             <p class="mt-4 text-lg lg:text-xl text-justify">Allows businesses to define various pay components and
               configures the payroll structure to suit various employee categories (e.g., salaried, hourly, part-time,
@@ -613,7 +606,7 @@
           </div>
           <div class="w-full lg:w-1/2 flex justify-end mt-6 lg:mt-0">
             <img src="src/in4images/Payrolldownload.png" alt="Slide Image"
-              class="w-full lg:w-full lg:h-96 object-cover">
+              class="w-[300px] h-[300px] object-cover">
           </div>
         </div>
         <div
@@ -643,7 +636,7 @@
           </div>
           <div class="w-full lg:w-1/2 pt-20">
             <h2 class="text-3xl lg:text-2xl font-medium bg-[#f7c3e6] px-6 py-1 rounded-3xl w-fit">Ess</h2>
-            <p class="mt-4 text-lg lg:text-xl font-bold text-center">personal information, payroll details, and HR
+            <p class="mt-4 text-lg lg:text-xl font-bold ">Personal information, Payroll details, and HR
               services through an online
               portal or mobile application</p>
             <p class="mt-4 text-lg lg:text-xl text-justify">Employees have real-time access to their information,
@@ -653,7 +646,7 @@
           </div>
           <div class="w-full lg:w-1/2 lg:h-96 flex justify-end mt-6 lg:mt-0">
             <img src="src/in4images/business-people-graphs_1308-29455-removebg-preview.png" alt="Slide Image"
-              class="w-[500px] h-[460px] object-coverr">
+              class="w-[300px] h-[300px] object-coverr">
           </div>
         </div>
         <div
@@ -670,7 +663,7 @@
           </div>
           <div class="w-full lg:w-1/2 pt-20">
             <h2 class="text-3xl lg:text-2xl font-medium bg-[#bddaf4] px-6 py-1 rounded-3xl w-fit">GeoTagging</h2>
-            <p class="mt-4 text-lg lg:text-xl font-bold text-center">Mark attendance easily from anywhere using the
+            <p class="mt-4 text-lg lg:text-xl font-bold ">Mark attendance easily from anywhere using the
               mobile app. (Geo-fencing
               &Geo Tagging)</p>
             <p class="mt-4 text-lg lg:text-xl text-justify">Provides real-time updates of employee location data,
@@ -680,7 +673,7 @@
           </div>
           <div class="w-full lg:w-1/2 lg:h-96 flex justify-end mt-6 lg:mt-0">
             <img src="src/in4images/freepik__background__30123.png" alt="Slide Image"
-              class="w-[500px] h-[460px] object-coverr">
+              class="w-[300px] h-[300px] object-coverr">
           </div>
 
         </div>
@@ -828,7 +821,7 @@
         </div>
         <div aria-hidden="true" class="mt-10 lg:mt-0">
           <img width="600" height="600"
-            src="https://images.unsplash.com/photo-1516542076529-1ea3854896f2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHwxNHx8Y29tcHV0ZXJ8ZW58MHwwfHx8MTY5OTE3MDk1N3ww&ixlib=rb-4.0.3&q=80&w=1080"
+            src="src/in4images/sync56285ed8-5d69-44e0-ae6c-158029bfe726.jpg"
             class="mx-auto rounded-lg shadow-lg dark-bg-gray-500" style="color:transparent">
         </div>
       </div>
@@ -849,12 +842,13 @@
       <h2 class="text-xl md:text-2xl font-semibold text-gray-800">
         Explore our wide range of Biometric Solutions
       </h2>
-      <a href="https://www.in4solution.com/index.html">
+      <a href="https://www.in4solution.com/index.html" target="_blank">
         <button
           class="bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 text-white font-semibold py-2 px-6 rounded-lg shadow-lg hover:from-purple-600 hover:via-purple-700 hover:to-purple-800 transition-all duration-300">
           Explore More
         </button>
       </a>
+      
     </div>
 
   </section>
