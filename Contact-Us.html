@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>in4solution </title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
 <body>
   <header class="bg-white shadow-md text-gray-600 sticky top-0 z-50 px-4">
@@ -211,6 +212,58 @@
                                           </div>
                                         </div>
                                       </section>
+                                      
+                                      <div id="popupForm" class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center hidden p-4">
+                                        <div class="relative bg-white p-6 shadow-lg rounded-3xl w-full max-w-3xl md:max-w-5xl border border-gray-300 flex flex-col md:flex-row">
+                                            
+                                            <!-- Left Side Content in Popup -->
+                                            <div class="md:w-1/2 w-full bg-cover bg-center p-6 md:p-10 rounded-t-3xl md:rounded-l-3xl md:rounded-tr-none text-white relative"
+                                                style="background-image: url('src/in4images/business-person-futuristic-business-environment_23-2150970181.avif');">
+                                                <div class="absolute inset-0 bg-black bg-opacity-60 rounded-t-3xl md:rounded-l-3xl md:rounded-tr-none"></div>
+                                                <div class="relative z-10 text-center md:text-left">
+                                                    <h2 class="text-2xl md:text-3xl font-bold">Let’s Work Together to Simplify Your HR Processes.</h2>
+                                                    <ul class="mt-4 md:mt-6 space-y-5 md:space-y-9 text-xs md:text-lg">
+                                                        <li><span class="text-green-400 bg-white px-1 py-1 rounded-full mr-2">✔</span>Complete your registration by filling the form.</li>
+                                                        <li><span class="text-green-400 bg-white px-1 py-1 rounded-full mr-2">✔</span>Get a call back and discuss your requirements.</li>
+                                                        <li><span class="text-green-400 bg-white px-1 py-1 rounded-full lg:mr-2 mr:24 ">✔</span>Schedule your demo.</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                    
+                                            <!-- Right Side Form -->
+                                            <div class="md:w-1/2 w-full bg-purple-100 p-6 md:p-8 rounded-b-3xl md:rounded-r-3xl md:rounded-bl-none relative">
+                                                <!-- Close Button -->
+                                                <button id="closeForm" class="absolute top-3 right-3 text-gray-700 hover:text-red-500 text-2xl font-bold">
+                                                    ✖
+                                                </button>
+                                    
+                                                <form class="space-y-4">
+                                                    <h3 class="text-xl md:text-2xl font-bold text-center">Get Started</h3>
+                                                    <input type="text" placeholder="First Name" class="p-3 border border-purple-300 rounded-md w-full focus:ring-2 focus:ring-purple-500" />
+                                                    <input type="email" placeholder="Work Email" class="p-3 border border-purple-300 rounded-md w-full focus:ring-2 focus:ring-purple-500" />
+                                                    <input type="tel" placeholder="Phone Number" class="p-3 border border-purple-300 rounded-md w-full focus:ring-2 focus:ring-purple-500" />
+                                                    <input type="text" placeholder="Company Name" class="p-3 border border-purple-300 rounded-md w-full focus:ring-2 focus:ring-purple-500" />
+                                                    <textarea placeholder="Your Message" class="p-3 border border-purple-300 rounded-md w-full h-24 md:h-32 focus:ring-2 focus:ring-purple-500"></textarea>
+                                                    <button type="submit" class="w-full bg-purple-700 text-white py-2 rounded-md font-bold hover:bg-purple-900 transition">
+                                                        Get Started
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <script>
+                                        // Show form after 5 seconds
+                                        setTimeout(() => {
+                                            document.getElementById("popupForm").classList.remove("hidden");
+                                        }, 5000);
+                                    
+                                        // Close form
+                                        document.getElementById("closeForm").addEventListener("click", () => {
+                                            document.getElementById("popupForm").classList.add("hidden");
+                                        });
+                                    </script>
+                                    
                                       <footer class="bg-white mt-16 h-auto p-10 font-[sans-serif] tracking-wide">
                                         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                                           <div class="lg:flex lg:items-center">
