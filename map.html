@@ -21,13 +21,10 @@
             color: #fff;
             display: flex;
             flex-direction: column;
-            justify-content: flex-start;
-            align-items: center;
-            min-height: 100vh;
-            padding: 20px;
+
         }
 
-        .header {
+        .hero-section {
             width: 100%;
             padding: 20px;
             background-color: #9b089b;
@@ -37,7 +34,7 @@
             margin-bottom: 20px;
         }
 
-        .header h1 {
+        .hero-section h1 {
             font-size: 24px;
             font-weight: 600;
         }
@@ -88,26 +85,6 @@
             border-radius: 15px;
         }
 
-        .office-details {
-            background-color: #8d049f;
-            padding: 20px;
-            border-radius: 15px;
-            width: 90%;
-            max-width: 900px;
-            text-align: center;
-        }
-
-        .office-details h2 {
-            color: #00b894;
-            font-size: 20px;
-            margin-bottom: 10px;
-        }
-
-        .office-details p {
-            font-size: 14px;
-            color: #dfe6e9;
-        }
-
         .contact-section {
             background-color: #6a0572;
             padding: 15px;
@@ -115,6 +92,8 @@
             text-align: center;
             width: 90%;
             max-width: 900px;
+            display: none;
+            /* Initially hidden */
         }
 
         .contact-section p {
@@ -128,123 +107,157 @@
             text-decoration: none;
             font-weight: bold;
         }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .buttons {
-                flex-wrap: wrap;
-                gap: 8px;
-                justify-content: center;
-                padding: 10px;
-            }
-
-            .btn {
-                font-size: 12px;
-                padding: 10px 15px;
-            }
-
-            .office-details,
-            .contact-section {
-                width: 95%;
-            }
-
-            .header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    padding: 20px;
-    background-color: #9b089b;
-    color: white;
-    text-align: center;
-    border-radius: 0;
-    margin-bottom: 0;
-    z-index: 1000; /* Ensure it stays on top of other content */
-}
-
-.header h1 {
-    font-size: 24px;
-    font-weight: 600;
-    margin: 0; /* Remove margin to avoid extra spacing */
-}
-
-        }
     </style>
 </head>
+<header class="bg-white shadow-md text-gray-600 sticky top-0 z-50 px-4">
+    <div class="container mx-auto flex justify-between items-center py-4">
+        <!-- Left section: Logo -->
+        <a href="index.html">
+            <div class="flex items-center">
+                <img src="src/in4images/in4cloud.png" alt="Your Company Logo" class="h-12  mb- mx-auto lg:mx-0" />
+            </div>
+        </a>
+        <!-- Hamburger menu (for mobile) -->
+        <div class="flex md:hidden">
+            <button id="hamburger" class="text-black focus:outline-none">
+                <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7">
+                    </path>
+                </svg>
+            </button>
+        </div>
+        <!-- Center section: Menu -->
+        <nav class="hidden md:flex md:flex-grow justify-center">
+            <ul class="flex justify-center space-x-6">
+                <!-- Dropdown for Products -->
+                <li class="group relative">
+                    <a href="javascript:void(0)"
+                        class="hover:text-[#7030a0] text-gray-600 font-bold block flex items-center">
+                        Products
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" class="ml-1 inline-block"
+                            viewBox="0 0 24 24">
+                            <path
+                                d="M12 16a1 1 0 0 1-.71-.29l-6-6a1 1 0 0 1 1.42-1.42l5.29 5.3 5.29-5.29a1 1 0 0 1 1.41 1.41l-6 6a1 1 0 0 1-.7.29z" />
+                        </svg>
+                    </a>
+                    <ul
+                        class="absolute shadow-lg bg-white space-y-3 lg:top-5 left-0 min-w-[250px] z-50 max-h-0 overflow-hidden group-hover:opacity-100 group-hover:max-h-[700px] px-6 group-hover:pb-4 group-hover:pt-6 transition-all duration-500">
+                        <li class="border-b py-2"><a href="in4.html"
+                                class="hover:text-[#7030a0] text-gray-600 text-[15px] font-bold block"></a></li>
+                        <li class="border-b py-2"><a href="Pro-Visit.html"
+                                class="hover:text-[#7030a0] text-gray-600 text-[15px] font-bold block"></a></li>
+                    </ul>
+                </li>
+                <li><a href="Contact-Us.html" class="hover:text-[#7030a0] font-bold">Contact Us</a></li>
+                <li><a href="#aboutus" class="hover:text-[#7030a0] font-bold"></a></li>
+                <li><a href="" class="hover:text-[#7030a0] font-bold"></a></li>
+            </ul>
+        </nav>
+    </div>
+    <!-- Mobile menu -->
+    <nav id="mobile-menu" class="hidden flex-col items-center space-y-4 md:hidden px-6 bg-white shadow-md">
+        <ul class="w-full text-center">
+            <!-- Mobile Dropdown for Products -->
+            <li class="border-b border-gray-300 py-2 relative">
+                <button class="hover:text-[#7030a0] font-bold w-full text-left justify-center flex items-center">
+                    Products
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" class="ml-1 inline-block"
+                        viewBox="0 0 24 24">
+                        <path
+                            d="M12 16a1 1 0 0 1-.71-.29l-6-6a1 1 0 0 1 1.42-1.42l5.29 5.3 5.29-5.29a1 1 0 0 1 1.41 1.41l-6 6a1 1 0 0 1-.7.29z" />
+                    </svg>
+                </button>
+                <ul class="hidden mt-2 space-y-2 p-4 rounded-md">
+                    <li><a href="in4.html" class="block text-gray-800 hover:text-[#7030a0]"></a></li>
+                    <li><a href="Pro-Visit.html" class="block text-gray-800 hover:text-[#7030a0]"></a></li>
+                </ul>
+            </li>
+            <li class="py-2"><a href="#contact" class="hover:text-[#007bff] font-bold"></a></li>
+            <li class="border-b border-gray-300 py-2"><a href="#aboutus" class="hover:text-[#7030a0] font-bold">Contact
+                    Us</a>
+            <li class="border-b border-gray-300 py-2"><a href="#aboutus" class="hover:text-[#7030a0] font-bold"></a>
+            </li>
+            </li>
+        </ul>
+    </nav>
+</header>
 
 <body>
-   
+    <section class="flex justify-center py-7 rel">
+        <div class="map-wrapper">
+            <div class="buttons">
+                <button class="btn" onclick="moveToLocation(1)">Corporate Office</button>
+                <button class="btn" onclick="moveToLocation(2)">Coimbatore Office</button>
+                <button class="btn" onclick="moveToLocation(3)">Bangalore Office</button>
+                <button class="btn" onclick="moveToLocation(4)">Mount Road</button>
+            </div>
 
-    <div class="map-wrapper">
-        <div class="buttons">
-            <button class="btn" onclick="moveToLocation(1)">Corporate Office</button>
-            <button class="btn" onclick="moveToLocation(2)">Coimbatore Office</button>
-            <button class="btn" onclick="moveToLocation(3)">Bangalore Office</button>
-            <button class="btn" onclick="moveToLocation(4)">Mount Road</button>
+            <div id="map"></div>
+
+            <div id="office-details" class="contact-section">
+                <p id="office-name"></p>
+                <p id="office-address"></p>
+                <p id="office-phone"></p>
+            </div>
         </div>
+      
+      
+      
+       
+       
+        <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+        <script>
+            var map = L.map('map').setView([13.0827, 80.2707], 13);
 
-        <div id="map"></div>
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
 
-        <div class="contact-section">
-            <p>Phone: <a href="tel:+919876543210">+91 98765 43210</a></p>
-        </div>
-    </div>
+            var offices = [
+                {
+                    name: "Corporate Office",
+                    lat: 13.0827, lon: 80.2707,
+                    address: "  In4Solution PVT LTD  No-4, 2nd Floor, Pillaiyar Kovil street, Kasi City Park , Kasi Estate, Ashok nagar, Chennai-600 083,Tamil nadu, INDIA",
+                    phone: "+91 89258 14088"
+                },
+                {
+                    name: "Coimbatore Office",
+                    lat: 11.0168, lon: 76.9558,
+                    address: "No 162 B/2 , 3rd Floor, Sarojini Street ,Ram Nagar, Coimbature - 641009 , Tamil Nadu",
+                    phone: "+91 89258 14088"
+                },
+                {
+                    name: "Bangalore Office",
+                    lat: 12.9716, lon: 77.5946,
+                    address: "#112/1,3rd Floor,11th Cross,17th Main road Sector-4,HSR Layout,Bengaluru, 560102",
+                    phone: "+91 89258 14088"
+                },
+                {
+                    name: "Mount Road",
+                    lat: 12.9392, lon: 77.7107,
+                    address: "No 2, G-13, Nathans complex, Sunguvar St ,Chintadripet, Chennai, Tamil Nadu 600002",
+                    phone: "+91 89258 14088"
+                }
+            ];
 
-    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-    <script>
-        var map = L.map('map').setView([13.0827, 80.2707], 13);
+            offices.forEach(function (office, index) {
+                L.marker([office.lat, office.lon]).addTo(map)
+                    .bindPopup('<b>' + office.name + '</b>');
+            });
 
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        }).addTo(map);
+            function moveToLocation(index) {
+                var office = offices[index - 1];
+                map.setView([office.lat, office.lon], 14);
 
-        var offices = [
-            {
-                name: "Corporate Office",
-                lat: 13.0827,
-                lon: 80.2707,
-                address: `In4Solution PVT LTD
-                No-4, 2nd Floor, Pillaiyar Kovil street,
-                Kasi City Park, Kasi Estate, Ashok Nagar,
-                Chennai-600 083, Tamil Nadu, INDIA`
-            },
-            {
-                name: "Coimbatore Office",
-                lat: 11.0168,
-                lon: 76.9558,
-                address: `No 162 B/2, 3rd Floor, Sarojini Street,
-                Ram Nagar, Coimbatore - 641009, Tamil Nadu`
-            },
-            {
-                name: "Bangalore Office",
-                lat: 12.9716,
-                lon: 77.5946,
-                address: `#112/1, 3rd Floor, 11th Cross, 17th Main Road, Mount Road Smart Shop,
-                No 2, G-13, Nathans Complex, Sunguvar St, Chintadripet, Chennai, Tamil Nadu 600002`
-            },
-            {
-                name: "Mount Road",
-                lat: 12.9392,
-                lon: 77.7107,
-                address: `Sector-4, HSR Layout, Bengaluru, 560102`
+                // Update office details section
+                document.getElementById("office-name").innerText = office.name;
+                document.getElementById("office-address").innerText = "Address: " + office.address;
+                document.getElementById("office-phone").innerHTML = 'Phone: <a href="tel:' + office.phone + '">' + office.phone + '</a>';
+
+                document.getElementById("office-details").style.display = "block";
             }
-        ];
-
-        offices.forEach(function (office, index) {
-            L.marker([office.lat, office.lon]).addTo(map)
-                .bindPopup('<b>' + office.name + '</b><br>' + office.address);
-        });
-
-        function moveToLocation(index) {
-            var office = offices[index - 1];
-            map.setView([office.lat, office.lon], 14);
-        }
-    </script>
+        </script>
+    </section>
 </body>
 
-</html>
-
-
-
-</body>
 </html>
